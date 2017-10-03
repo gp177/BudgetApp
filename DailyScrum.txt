@@ -1,0 +1,8 @@
+Every day both team members write the following
+
+Date and Name
+1. What have I done / not done since last scrum?
+2. What will I do from now until next scrum?
+3. Where do I need help from my teammate, teacher or internet?
+
+
