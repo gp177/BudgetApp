@@ -6,3 +6,7 @@ Date and Name
 3. Where do I need help from my teammate, teacher or internet?
 
 
+4.10.2017 Oelksii Redko
+1.Design of the main window and chart window, I couldn't find out how to use installed libraries from Nuget
+2.Start implementing the design in a main project, make a decision about panels witch will be used in main window,create database and a  model for it
+3.Made the fial decision about database and mainwindow layouts wit my teammate
