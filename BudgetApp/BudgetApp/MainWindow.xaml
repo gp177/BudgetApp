@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="214.578" Width="483.038">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
+        <Label Content="&#x9;        Content" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="206"/>
+        <CheckBox Content="Spending" HorizontalAlignment="Left" Margin="262,49,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Income" HorizontalAlignment="Left" Margin="370,49,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Income" HorizontalAlignment="Left" Margin="262,70,0,0" VerticalAlignment="Top" Width="70"/>
+        <DatePicker HorizontalAlignment="Left" Margin="327,103,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>
