@@ -8,9 +8,10 @@ Date and Name
 =================================================================================
 
 10/4/2017 Giorgio Plescia,
-1. Finalized Database design, created SQL script to add tables. Edited and finished proposal text. There is
-some window design left to do.
+1. Finalized Database design, created SQL script to add tables. Edited and finished proposal text. 
+There is some window design left to do.
 2. Complete the final window design and sub windows. Possible add functionality to the buttons. 
+Create atleast three user stories on trello, break them down in todo items.
 3.Approval for the changed window and DB table designs, wpf placement and NuGet usage.
 
 
