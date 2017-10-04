@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Charts" Height="409.739" Width="662.048">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="654">
+            <MenuItem Header="File" Height="19" Width="38"/>
+            <MenuItem Header="Tools" Height="19" Width="38"/>
+        </Menu>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="337" Margin="16,24,0,0" VerticalAlignment="Top" Width="446"/>
+        <Label Content="Charts control" HorizontalAlignment="Left" Margin="473,24,0,0" VerticalAlignment="Top" Width="85"/>
+        <DatePicker HorizontalAlignment="Left" Margin="533,50,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="533,79,0,0" VerticalAlignment="Top"/>
+        <Label Content="From" HorizontalAlignment="Left" Margin="491,50,0,0" VerticalAlignment="Top"/>
+        <Label Content="to" HorizontalAlignment="Left" Margin="507,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.158,0.465"/>
+        <CheckBox Content="spendings" HorizontalAlignment="Left" Margin="492,115,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="incomes" HorizontalAlignment="Left" Margin="571,115,0,0" VerticalAlignment="Top"/>
+        <ListBox HorizontalAlignment="Left" Height="58" Margin="492,218,0,0" VerticalAlignment="Top" Width="143">
+            <ListBoxItem Content="Account 1"/>
+            <ListBoxItem Content="Account 2"/>
+        </ListBox>
+        <Label Content="Accounts" HorizontalAlignment="Left" Margin="492,192,0,0" VerticalAlignment="Top" Width="68"/>
+        <ComboBox HorizontalAlignment="Left" Margin="492,165,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Categories" HorizontalAlignment="Left" Margin="491,139,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
