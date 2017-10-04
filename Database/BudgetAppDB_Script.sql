@@ -13,7 +13,7 @@ on primary
 	-- Data Path and file name
 	filename = 'D:\BudgetDB\BudgetAppDB.mdf',
 	-- File size
-	size = 10MB,
+	size = 20MB,
 	-- file growth
 	filegrowth = 2MB,
 	-- maximum file size
@@ -26,7 +26,7 @@ log on
 	-- Data Path and file name
 	filename = 'D:\BudgetDB\BudgetAppDB_log.ldf',
 	-- File size
-	size = 2MB,
+	size = 6MB,
 	-- file growth
 	filegrowth = 10%,
 	-- maximum file size
