@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,20 @@ namespace BudgetApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Database db;
+
         public MainWindow()
         {
-            InitializeComponent();
+            //Database connection
+            try {
+                db = new Database();
+                InitializeComponent();
+                     
+            }catch(SqlException ex)
+            {
+                MessageBox.Show("DataBese error" + ex.Message,"ERROR", MessageBoxButton.OK,MessageBoxImage.Error);
+            }
         }
     }
 }
