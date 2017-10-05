@@ -1,37 +1,37 @@
 
-use master
-;
-go 
+--use master
+--;
+--go 
 
-/* Database Creation */
+--/* Database Creation */
 
-create database BudgetAppDB
-on primary
-(
-	-- File name
-	name = 'BudgetAppDB',
-	-- Data Path and file name
-	filename = 'D:\BudgetDB\BudgetAppDB.mdf',
-	-- File size
-	size = 20MB,
-	-- file growth
-	filegrowth = 2MB,
-	-- maximum file size
-	maxsize = 200MB
-)
-log on
-(
-	-- File name
-	name = 'BudgetAppDBP_log',
-	-- Data Path and file name
-	filename = 'D:\BudgetDB\BudgetAppDB_log.ldf',
-	-- File size
-	size = 6MB,
-	-- file growth
-	filegrowth = 10%,
-	-- maximum file size
-	maxsize = 25MB
-)
+--create database BudgetAppDB
+--on primary
+--(
+--	-- File name
+--	name = 'BudgetAppDB',
+--	-- Data Path and file name
+--	filename = 'D:\BudgetDB\BudgetAppDB.mdf',
+--	-- File size
+--	size = 20MB,
+--	-- file growth
+--	filegrowth = 2MB,
+--	-- maximum file size
+--	maxsize = 200MB
+--)
+--log on
+--(
+--	-- File name
+--	name = 'BudgetAppDBP_log',
+--	-- Data Path and file name
+--	filename = 'D:\BudgetDB\BudgetAppDB_log.ldf',
+--	-- File size
+--	size = 6MB,
+--	-- file growth
+--	filegrowth = 10%,
+--	-- maximum file size
+--	maxsize = 25MB
+--)
 
 use BudgetAppDB
 ;
