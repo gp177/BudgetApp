@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,32 @@ namespace BudgetApp
     /// </summary>
     public partial class AddAccount : Window
     {
+        Database db;
         public AddAccount()
         {
-            InitializeComponent();
+            try
+            {
+                db = new Database();
+                InitializeComponent();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("DataBese error" + ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btAddAccountSql_Click(object sender, RoutedEventArgs e)
         {
-
+            String name = tbAccountName.Text;
+            String type = tbAccountType.Text;
+            double balance = Double.Parse(tbBalance.Text);
+            int number = int.Parse(tbAccountNumber.Text);
+            db.AddAccount(name, type, number, balance);
+            this.Close();
+            
         }
+
+       
     }
 }
