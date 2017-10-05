@@ -1,0 +1,15 @@
+﻿<Window x:Class="BudgetApp.AddCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetApp"
+        mc:Ignorable="d"
+        Title="AddCategory" Height="148.623" Width="214.679">
+    <Grid>
+        <TextBox x:Name="tbAddCategorySQL" HorizontalAlignment="Left" Height="23" Margin="25,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btAddCategorySQL" Content="Add Category" HorizontalAlignment="Left" Margin="59,84,0,0" VerticalAlignment="Top" Width="84"/>
+
+    </Grid>
+</Window>

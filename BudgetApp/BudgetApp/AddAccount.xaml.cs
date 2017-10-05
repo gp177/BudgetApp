@@ -23,5 +23,10 @@ namespace BudgetApp
         {
             InitializeComponent();
         }
+
+        private void btAddAccountSql_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -15,26 +15,13 @@ using System.Windows.Shapes;
 namespace BudgetApp
 {
     /// <summary>
-    /// Interaction logic for AddRecord.xaml
+    /// Interaction logic for AddCategory.xaml
     /// </summary>
-    public partial class AddRecord : Window
+    public partial class AddCategory : Window
     {
-        public AddRecord()
+        public AddCategory()
         {
             InitializeComponent();
-        }
-
-        
-
-        private void btAddAccount_Click(object sender, RoutedEventArgs e)
-        {
-            AddAccount acc = new AddAccount();
-            acc.Show();
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

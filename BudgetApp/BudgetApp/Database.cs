@@ -47,14 +47,15 @@ namespace BudgetApp
         //    insertCommand.Parameters.Add(new SqlParameter("Height", height));
         //    insertCommand.ExecuteNonQuery();
         //}
-        //public void AddCategory(Record r)
-        //{
-        //    SqlCommand insertCommand = new SqlCommand("INSERT INTO Record (Name,Age,Height) VALUES (@Name,@Age,@Height)", conn);
-        //    insertCommand.Parameters.Add(new SqlParameter("Name", name));
-        //    insertCommand.Parameters.Add(new SqlParameter("Age", age));
-        //    insertCommand.Parameters.Add(new SqlParameter("Height", height));
-        //    insertCommand.ExecuteNonQuery();
-        //}
+
+
+        public void AddCategory(String CategoryType)
+        {
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Category (CategoryType) VALUES (@CategoryType)", conn);
+            insertCommand.Parameters.Add(new SqlParameter("CategoryType", CategoryType));
+            insertCommand.ExecuteNonQuery();
+        }
+
         //public void AddTag(Record r)
         //{
         //    SqlCommand insertCommand = new SqlCommand("INSERT INTO Record (Name,Age,Height) VALUES (@Name,@Age,@Height)", conn);
