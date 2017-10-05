@@ -11,27 +11,117 @@ namespace BudgetApp
         // fields encapsulated
 
        // Records table
-        private int RecordId{get; set;}
-        private DateTime _Date { get; set; }
-        private double _Amount { get; set; }
+        public int RecordId{get; set;}
+        private DateTime _Date;
+        private double _Amount;
         // TODO: Add Document   
    
         // Accounts table
-        private int AccountId { get; set; }
-        private String _AccountType { get; set; }
-        private double _AccounNumber { get; set; }
-        private double _Balance { get; set; }
+        public int AccountId { get; set; }
+        private String _AccountType;
+        private double _AccountNumber;
+        private double _Balance;
 
         // Category table
-        private int CategoryId { get; set; }
-        private String _CategoryType { get; set; }
+        public int CategoryId { get; set; }
+        private String _CategoryType;
 
         // Tag table
-        private int TagId { get; set; }
+        public int TagId { get; set; }
         private String _Descrption { get; set; }
 
         // InterTag able
-        private int InterId { get; set; }
+        public int InterId { get; set; }
+
+
+
+
+        // Records table arguments
+        public DateTime Date
+        {
+            get { return _Date; }
+
+            set
+            {
+                _Date = value;
+            }
+        }
+
+        public double Amount
+        {
+            get { return _Amount; }
+
+            set
+            {
+                _Amount = value;
+            }
+        }
+
+        // Accounts table
+        public String AccountType
+        {
+            get { return _AccountType; }
+
+            set
+            {
+                _AccountType = value;
+            }
+        }
+
+        public double AccountNumber
+        {
+            get { return _AccountNumber; }
+
+            set
+            {
+                _AccountNumber = value;
+            }
+        }
+
+        public double Balance
+        {
+            get
+            {
+                return _Balance;
+            }
+
+            set
+            {
+                _Balance = value;
+            }
+        }
+
+       
+
+        // Category table
+        public String CategoryType
+        {
+            get { return _CategoryType; }
+
+            set
+            {
+                _CategoryType = value;
+            }
+        }
+
+        //Tag table
+        public String description
+        {
+            get { return _Descrption; }
+
+            set
+            {
+                _Descrption = value;
+            }
+        }
+
 
     }
+
+
+
+
+
+
+
 }
