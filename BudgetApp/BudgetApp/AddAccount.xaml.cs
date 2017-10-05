@@ -43,9 +43,10 @@ namespace BudgetApp
             int number = int.Parse(tbAccountNumber.Text);
             db.AddAccount(name, type, number, balance);
             this.Close();
-            
+
         }
 
        
+        
     }
 }

@@ -9,7 +9,7 @@
     <Grid>
         <TextBox x:Name="tbAddCategorySQL" HorizontalAlignment="Left" Height="23" Margin="25,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btAddCategorySQL" Content="Add Category" HorizontalAlignment="Left" Margin="59,84,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button x:Name="btAddCategorySQL" Content="Add Category" HorizontalAlignment="Left" Margin="59,84,0,0" VerticalAlignment="Top" Width="84" Click="btAddCategorySQL_Click"/>
 
     </Grid>
 </Window>

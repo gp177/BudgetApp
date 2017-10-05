@@ -54,6 +54,8 @@ namespace BudgetApp
 
             set
             {
+               
+
                 _Amount = value;
             }
         }
@@ -65,7 +67,14 @@ namespace BudgetApp
 
             set
             {
-                _AccountType = value;
+                if ((value.Length <= 0) || value.Length > 60)
+                {
+                    throw new ArgumentOutOfRangeException("Account Type must be in between 1-60 Characters");
+                }
+                else
+                {
+                    _AccountType = value;
+                }
             }
         }
 
@@ -98,7 +107,14 @@ namespace BudgetApp
 
             set
             {
-                _AccountName = value;
+                if ((value.Length <= 0) || value.Length > 60)
+                {
+                    throw new ArgumentOutOfRangeException("Account Name must be in between 1-60 Characters");
+                }
+                else
+                {
+                    _AccountName = value;
+                }
             }
         }
 

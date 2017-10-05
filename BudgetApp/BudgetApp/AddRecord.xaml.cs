@@ -36,5 +36,11 @@ namespace BudgetApp
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddCategory cat = new AddCategory();
+            cat.Show();
+        }
     }
 }

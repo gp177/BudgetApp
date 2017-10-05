@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,28 @@ namespace BudgetApp
     /// </summary>
     public partial class AddCategory : Window
     {
+        Database db;
+
         public AddCategory()
         {
-            InitializeComponent();
+            try
+            {
+                db = new Database();
+                InitializeComponent();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("DataBese error" + ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btAddCategorySQL_Click(object sender, RoutedEventArgs e)
+        {
+            String category = tbAddCategorySQL.Text;
+
+            db.AddCategory(category);
+            this.Close();
         }
     }
 }
