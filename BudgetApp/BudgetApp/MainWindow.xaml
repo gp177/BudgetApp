@@ -5,15 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="214.578" Width="483.038">
-    <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
-        <Label Content="&#x9;        Content" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="206"/>
-        <CheckBox Content="Spending" HorizontalAlignment="Left" Margin="262,49,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Income" HorizontalAlignment="Left" Margin="370,49,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Income" HorizontalAlignment="Left" Margin="262,70,0,0" VerticalAlignment="Top" Width="70"/>
-        <DatePicker HorizontalAlignment="Left" Margin="327,103,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="120"/>
+        Title="Budget Application" Height="819" Width="1100.5" WindowStartupLocation="CenterScreen">
 
-    </Grid>
+    <DockPanel LastChildFill="False">
+
+        <Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File" Height="25" Width="48" FontSize="18"/>
+            <MenuItem Header="Tools" Height="25" Width="53" FontSize="18"/>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Top" Margin="0,147,0,0"/>
+        <StackPanel DockPanel.Dock="Left" Margin="0,0,0,-142" Width="811">
+            <Grid Margin="0,0,0,-147" Width="798">
+
+                <ListView Margin="10,100,10,60"  >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button Content="Add Record" HorizontalAlignment="Left" Margin="10,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
+                <Button Content="Delete" HorizontalAlignment="Left" Margin="195,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
+                <Button Content="Edit" HorizontalAlignment="Left" Margin="380,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
+                <DatePicker HorizontalAlignment="Left" Margin="58,58,0,0" VerticalAlignment="Top"/>
+                <DatePicker HorizontalAlignment="Left" Margin="191,58,0,0" VerticalAlignment="Top" />
+                <Label Content="From" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="43"/>
+                <Label Content="to" HorizontalAlignment="Left" Margin="165,56,0,0" VerticalAlignment="Top"/>
+                <Label Content="Type" HorizontalAlignment="Left" Margin="314,56,0,0" VerticalAlignment="Top"/>
+                <ComboBox HorizontalAlignment="Left" Margin="357,60,0,0" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+
 </Window>
