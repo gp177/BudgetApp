@@ -21,6 +21,7 @@ namespace BudgetApp
         private String _AccountType;
         private double _AccountNumber;
         private double _Balance;
+        private String _AccountName;
 
         // Category table
         public int CategoryId { get; set; }
@@ -28,7 +29,7 @@ namespace BudgetApp
 
         // Tag table
         public int TagId { get; set; }
-        private String _Descrption { get; set; }
+        private String _Descrption;
 
         // InterTag able
         public int InterId { get; set; }
@@ -88,6 +89,16 @@ namespace BudgetApp
             set
             {
                 _Balance = value;
+            }
+        }
+
+        public String AccountName
+        {
+            get { return _AccountName; }
+
+            set
+            {
+                _AccountName = value;
             }
         }
 
