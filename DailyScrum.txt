@@ -24,3 +24,9 @@ Create atleast three user stories on trello, break them down in todo items.
 1. Implemented basic control to work with database /didn't finish test different layouts for main window.
 2. Continue building design, add functionality to buttons, implement database connection
 3. need to discus layout fiatures with my teammate, tolk about chaing in desigh of main window.
+
+
+10/5/2017 Giorgio Plescia,
+1. Fixed Database problems, created UI for welcome screen. Added more window screenshots for the proposal.
+2. Fully test database by adding data. Give functionality to Welcome screen, link the listviews with Database for CRUD.
+3. Ask to help bind all the windows and assistance from the NuGet libraries.
