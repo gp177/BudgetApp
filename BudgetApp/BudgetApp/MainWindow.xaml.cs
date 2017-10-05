@@ -27,14 +27,23 @@ namespace BudgetApp
         public MainWindow()
         {
             //Database connection
-            try {
+            try
+            {
                 db = new Database();
                 InitializeComponent();
-                     
-            }catch(SqlException ex)
-            {
-                MessageBox.Show("DataBese error" + ex.Message,"ERROR", MessageBoxButton.OK,MessageBoxImage.Error);
+
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("DataBese error" + ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecord rec = new AddRecord();
+            rec.Show();
+
         }
     }
 }

@@ -24,7 +24,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Content="Add Record" HorizontalAlignment="Left" Margin="10,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
+                <Button Content="Add Record" HorizontalAlignment="Left" Margin="10,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Click="Button_Click"/>
                 <Button Content="Delete" HorizontalAlignment="Left" Margin="195,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
                 <Button Content="Edit" HorizontalAlignment="Left" Margin="380,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
                 <DatePicker HorizontalAlignment="Left" Margin="58,58,0,0" VerticalAlignment="Top"/>
