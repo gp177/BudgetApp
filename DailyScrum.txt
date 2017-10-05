@@ -19,3 +19,8 @@ Create atleast three user stories on trello, break them down in todo items.
 1.Design of the main window and chart window, I couldn't find out how to use installed libraries from Nuget
 2.Start implementing the design in a main project, make a decision about panels witch will be used in main window,create database and a  model for it
 3.Made the final decision about database and mainwindow layouts with my teammate. Write 3 user stories
+
+5.10.2017 Oleksii Redko
+1. Implemented basic control to work with database /didn't finish test different layouts for main window.
+2. Continue building design, add functionality to buttons, implement database connection
+3. need to discus layout fiatures with my teammate, tolk about chaing in desigh of main window.
