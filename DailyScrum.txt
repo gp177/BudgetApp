@@ -20,6 +20,7 @@ Create atleast three user stories on trello, break them down in todo items.
 2.Start implementing the design in a main project, make a decision about panels witch will be used in main window,create database and a  model for it
 3.Made the final decision about database and mainwindow layouts with my teammate. Write 3 user stories
 
+
 5.10.2017 Oleksii Redko
 1. Implemented basic control to work with database /didn't finish test different layouts for main window.
 2. Continue building design, add functionality to buttons, implement database connection
@@ -30,3 +31,9 @@ Create atleast three user stories on trello, break them down in todo items.
 1. Fixed Database problems, created UI for welcome screen. Added more window screenshots for the proposal.
 2. Fully test database by adding data. Give functionality to Welcome screen, link the listviews with Database for CRUD.
 3. Ask to help bind all the windows and assistance from the NuGet libraries.
+
+
+10/6/2017 Giorgio Plescia,
+1. Finished Add Category, connected it with database, Finalized the WeclomeScreen, Fixed Account fields in Records class.
+2. Connect the two comboBoxes to the database, Finish the CRUD functionality in the Database class, Work on MainWindow.
+3. Get help for window design of MainWindow and charts, Research Online more about certain libraries.
