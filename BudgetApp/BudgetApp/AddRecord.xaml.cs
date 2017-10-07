@@ -34,7 +34,7 @@ namespace BudgetApp
             cbCategory.Items.Clear();
             foreach (Record rec in list)
             {
-                cbCategory.Items.Add(rec);
+                cbCategory.Items.Add(rec.CategoryType);
                
             }
         }
@@ -45,7 +45,7 @@ namespace BudgetApp
             cbAccount.Items.Clear();
             foreach(Record rec in list)
             {
-                cbAccount.Items.Add(rec);
+                cbAccount.Items.Add(rec.AccountName);
             }
         }
 
@@ -66,6 +66,11 @@ namespace BudgetApp
         {
             AddCategory cat = new AddCategory();
             cat.Show();
+        }
+
+        private void btAddRecord_Click(object sender, RoutedEventArgs e)
+        {
+          
         }
     }
 }
