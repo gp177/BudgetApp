@@ -7,15 +7,19 @@
         mc:Ignorable="d"
         Title="AddAccount" Height="199.554" Width="247.098">
     <Grid>
-        <TextBox Name="tbAccountName" HorizontalAlignment="Left" Height="23" Margin="95,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbAccountNumber" HorizontalAlignment="Left" Height="23" Margin="95,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tbAccountType" HorizontalAlignment="Left" Height="23" Margin="95,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="133*"/>
+            <ColumnDefinition Width="106*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="tbAccountName" HorizontalAlignment="Left" Height="23" Margin="95,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbAccountNumber" HorizontalAlignment="Left" Height="23" Margin="95,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbAccountType" HorizontalAlignment="Left" Height="23" Margin="95,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <Label Content="AccountName" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Number" HorizontalAlignment="Left" Margin="36,34,0,0" VerticalAlignment="Top"/>
         <Label Content="Type" HorizontalAlignment="Left" Margin="49,61,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbBalance"  HorizontalAlignment="Left" Height="23" Margin="95,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="tbBalance"  HorizontalAlignment="Left" Height="23" Margin="95,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
         <Label Content="Balance" HorizontalAlignment="Left" Margin="33,92,0,0" VerticalAlignment="Top"/>
-        <Button Name="btAddAccountSql" Content="Add Account" HorizontalAlignment="Left" Margin="36,137,0,0" VerticalAlignment="Top" Width="179" Click="btAddAccountSql_Click"/>
+        <Button Name="btAddAccountSql" Content="Add Account" HorizontalAlignment="Left" Margin="36,137,0,0" VerticalAlignment="Top" Width="179" Click="btAddAccountSql_Click" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

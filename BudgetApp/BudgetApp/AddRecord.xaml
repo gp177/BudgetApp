@@ -9,8 +9,8 @@
     <Grid>
         <Label Content="Account" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Name="btAddAccount" Content="Add" HorizontalAlignment="Left" Margin="145,35,0,0" VerticalAlignment="Top" Width="32" Click="btAddAccount_Click"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="146,93,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click"/>
         <RadioButton Content="Spending" HorizontalAlignment="Left" Margin="32,126,0,0" VerticalAlignment="Top"/>

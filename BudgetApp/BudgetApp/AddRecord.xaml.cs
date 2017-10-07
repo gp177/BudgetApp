@@ -19,9 +19,34 @@ namespace BudgetApp
     /// </summary>
     public partial class AddRecord : Window
     {
+        Database db;
         public AddRecord()
         {
+            db = new Database();
             InitializeComponent();
+            reloadCategoryList();
+            reloadAccountList();
+        }
+
+        private void reloadCategoryList()
+        {
+            List<Record> list = db.GetCategories();
+            cbCategory.Items.Clear();
+            foreach (Record rec in list)
+            {
+                cbCategory.Items.Add(rec);
+               
+            }
+        }
+
+        private void reloadAccountList()
+        {
+            List<Record> list = db.GetAccounts();
+            cbAccount.Items.Clear();
+            foreach(Record rec in list)
+            {
+                cbAccount.Items.Add(rec);
+            }
         }
 
         
