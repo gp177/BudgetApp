@@ -13,8 +13,8 @@
         <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Name="btAddAccount" Content="Add" HorizontalAlignment="Left" Margin="145,35,0,0" VerticalAlignment="Top" Width="32" Click="btAddAccount_Click"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="146,93,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click"/>
-        <RadioButton Content="Spending" HorizontalAlignment="Left" Margin="32,126,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="income" HorizontalAlignment="Left" Margin="119,126,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbSpending" Content="Spending" HorizontalAlignment="Left" Margin="32,126,0,0" VerticalAlignment="Top" GroupName="RecType"/>
+        <RadioButton x:Name="rbIncome" Content="income" HorizontalAlignment="Left" Margin="119,126,0,0" VerticalAlignment="Top" GroupName="RecType" />
         <TextBox x:Name="tbTags" HorizontalAlignment="Left" Height="23" Margin="32,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="32,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Tags" HorizontalAlignment="Left" Margin="32,135,0,0" VerticalAlignment="Top"/>

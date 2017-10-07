@@ -57,14 +57,27 @@ namespace BudgetApp
             return CatList;
         }
 
-        //public void AddTag(Record r)
-        //{
-        //    SqlCommand insertCommand = new SqlCommand("INSERT INTO Record (Name,Age,Height) VALUES (@Name,@Age,@Height)", conn);
-        //    insertCommand.Parameters.Add(new SqlParameter("Name", name));
-        //    insertCommand.Parameters.Add(new SqlParameter("Age", age));
-        //    insertCommand.Parameters.Add(new SqlParameter("Height", height));
-        //    insertCommand.ExecuteNonQuery();
-        //}
+      public void AddTags(String Description)
+        {
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) VALUES (@Description)", conn);
+            insertCommand.Parameters.Add(new SqlParameter("Description", Description));
+            insertCommand.ExecuteNonQuery();
+        }
+
+
+
+        public void AddAmount(int Amount)
+        {
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Records (Amount) VALUES (@Amount)", conn);
+            insertCommand.Parameters.Add(new SqlParameter("Amount", Amount));
+            insertCommand.ExecuteNonQuery();
+        }
+
+        public void AddDate(DateTime Date)
+        {
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Records (Date) VALUES (@Date)", conn);
+             insertCommand.Parameters.Add(new SqlParameter("Date", Date));
+        }
 
         public void AddAccount(String AccountName, String AccountType, int AccountNumber, double Balance)
         {

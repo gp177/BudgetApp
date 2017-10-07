@@ -70,7 +70,19 @@ namespace BudgetApp
 
         private void btAddRecord_Click(object sender, RoutedEventArgs e)
         {
-          
+            // values from user inputs
+            String account = cbAccount.Text;
+            String category = cbCategory.Text;
+            String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
+            String tags = tbTags.Text;
+            int Amount = int.Parse(tbBalance.Text);
+            DateTime date = DateTime.Parse(DatePick.Text);
+
+
+            db.AddTags(tags);
+            db.AddAmount(Amount);
+            db.AddDate(date);
+            
         }
     }
 }

@@ -16,8 +16,12 @@
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Top" Margin="0,147,0,0"/>
         <StackPanel DockPanel.Dock="Left" Margin="0,0,0,-142" Width="811">
             <Grid Margin="0,0,0,-147" Width="798">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                <ListView Margin="10,100,10,60"  >
+                <ListView Name="lvRecords" Margin="10,100,10,60" Grid.ColumnSpan="2"  >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
