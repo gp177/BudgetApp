@@ -42,7 +42,7 @@ namespace BudgetApp
         public List<Record> GetCategories()
         {
             List<Record> CatList = new List<Record>();
-            SqlCommand selectCommand = new SqlCommand("SELECT CategoryType FROM Category ORDER BY CategoryId", conn);
+            SqlCommand selectCommand = new SqlCommand("SELECT CategoryType FROM Category", conn);
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -92,7 +92,7 @@ namespace BudgetApp
         public List<Record> GetAccounts()
         {
             List<Record> AccList = new List<Record>();
-            SqlCommand selectCommand = new SqlCommand("SELECT AccountName FROM Accounts ORDER BY AccountId", conn);
+            SqlCommand selectCommand = new SqlCommand("SELECT AccountName FROM Accounts", conn);
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())

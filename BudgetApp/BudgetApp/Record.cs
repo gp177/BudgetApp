@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace BudgetApp
 {
@@ -14,7 +15,8 @@ namespace BudgetApp
         public int RecordId{get; set;}
         private DateTime _Date;
         private double _Amount;
-        // TODO: Add Document   
+           
+        private Image _Document;
    
         // Accounts table
         public int AccountId { get; set; }
@@ -54,9 +56,14 @@ namespace BudgetApp
 
             set
             {
-               
+                if ((value <= 0) || value > 2147483645)
+                    throw new ArgumentOutOfRangeException("Amount must be in range");
 
-                _Amount = value;
+                else
+                {
+
+                    _Amount = value;
+                }
             }
         }
 
@@ -97,7 +104,14 @@ namespace BudgetApp
 
             set
             {
-                _Balance = value;
+                if ((value <= 0) || value > 2147483645)
+                    throw new ArgumentOutOfRangeException("Amount must be in range");
+
+                else
+                {
+
+                    _Balance = value;
+                }
             }
         }
 
@@ -127,7 +141,14 @@ namespace BudgetApp
 
             set
             {
-                _CategoryType = value;
+                if ((value.Length <= 0) || value.Length > 60)
+                {
+                    throw new ArgumentOutOfRangeException("Category Type must be in between 1-60 Characters");
+                }
+                else
+                {
+                    _CategoryType = value;
+                }
             }
         }
 
@@ -138,7 +159,24 @@ namespace BudgetApp
 
             set
             {
-                _Descrption = value;
+                if ((value.Length <= 0) || value.Length > 200)
+                {
+                    throw new ArgumentOutOfRangeException("Description must be in between 1-200 Characters");
+                }
+                else
+                {
+                    _Descrption = value;
+                }
+            }
+        }
+
+        public Image Document
+        {
+            get { return _Document; }
+
+            set
+            {
+                _Document = value;
             }
         }
 

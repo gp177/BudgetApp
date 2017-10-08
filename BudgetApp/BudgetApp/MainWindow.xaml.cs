@@ -31,6 +31,7 @@ namespace BudgetApp
             {
                 db = new Database();
                 InitializeComponent();
+                reloadAccList();
 
             }
             catch (SqlException ex)
@@ -38,6 +39,17 @@ namespace BudgetApp
                 MessageBox.Show("DataBese error" + ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void reloadAccList()
+        {
+            List<Record> list = db.GetAccounts();
+            lvRecords.Items.Clear();
+            foreach(Record r in list)
+            {
+                lvRecords.Items.Add(r);
+            }
+
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

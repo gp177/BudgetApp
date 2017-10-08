@@ -10,7 +10,7 @@
         <Label Content="Password" Margin="112,87,128,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <PasswordBox x:Name="pbPass" HorizontalAlignment="Left" Margin="112,134,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
         <Button Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="112,175,0,0" Height="33" Click="Button_Click"/>
-        <Label Content="         Welcome!&#xD;&#xA;&#x9;" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top" Width="177" FontSize="18" Height="35"/>
+        <Label Content="         Welcome!&#xD;&#xA;&#x9;" HorizontalAlignment="Left" Margin="82,10,0,0" VerticalAlignment="Top" Width="177" FontSize="18" Height="35"/>
         <Label Content="This Program is currently under development, &#xD;&#xA;please enter the developer password to continue. " HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,-0.249" Width="340" HorizontalContentAlignment="Center" FontSize="10"/>
         <TextBlock HorizontalAlignment="Left" Margin="75,246,0,0" VerticalAlignment="Top" Width="43" FontSize="10" RenderTransformOrigin="0.174,0.591">           
     <Hyperlink NavigateUri="https://github.com/gp177/BudgetApp" RequestNavigate="Hyperlink_RequestNavigate" >
