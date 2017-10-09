@@ -75,7 +75,7 @@ namespace BudgetApp
             // values from user inputs
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
-            String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
+            
             String Tags = tbTags.Text;
             int AccId = db.GetAccountID(Account);
             int CatId = db.GetCategoryID(Category);

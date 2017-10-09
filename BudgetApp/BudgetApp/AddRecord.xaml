@@ -5,23 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="AddRecord" Height="280.58" Width="409.821">
-    <Grid>
+        Title="AddRecord" Height="280.58" Width="409.821" ResizeMode="NoResize">
+    <Grid Margin="0,0,10,8">
         <Label Content="Account" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Name="btAddAccount" Content="Add" HorizontalAlignment="Left" Margin="145,35,0,0" VerticalAlignment="Top" Width="32" Click="btAddAccount_Click"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="146,93,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click"/>
-        <RadioButton x:Name="rbSpending" Content="Spending" HorizontalAlignment="Left" Margin="32,126,0,0" VerticalAlignment="Top" GroupName="RecType"/>
-        <RadioButton x:Name="rbIncome" Content="income" HorizontalAlignment="Left" Margin="119,126,0,0" VerticalAlignment="Top" GroupName="RecType" />
-        <TextBox x:Name="tbTags" HorizontalAlignment="Left" Height="23" Margin="32,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="32,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Tags" HorizontalAlignment="Left" Margin="32,135,0,0" VerticalAlignment="Top"/>
-        <Label Content="Balance" HorizontalAlignment="Left" Margin="32,184,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbTags" HorizontalAlignment="Left" Height="23" Margin="32,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="32,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Tags" HorizontalAlignment="Left" Margin="32,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="Amount" HorizontalAlignment="Left" Margin="32,177,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="DatePick" HorizontalAlignment="Left" Margin="260,31,0,0" VerticalAlignment="Top"/>
         <Label Content="Date" HorizontalAlignment="Left" Margin="195,31,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btAddRecord" Content="AddRecord" HorizontalAlignment="Left" Margin="219,214,0,0" VerticalAlignment="Top" Width="143" Click="btAddRecord_Click"/>
+        <Button x:Name="btAddRecord" Content="AddRecord" HorizontalAlignment="Left" Margin="219,207,0,0" VerticalAlignment="Top" Width="143" Click="btAddRecord_Click"/>
 
     </Grid>
 </Window>

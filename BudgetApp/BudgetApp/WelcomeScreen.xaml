@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="WelcomeScreen" Height="305.122" Width="365.121" ResizeMode="CanMinimize">
+        Title="WelcomeScreen" Height="362.621" Width="366.654" ResizeMode="CanMinimize">
     <Grid>
         <Label Content="Password" Margin="112,87,128,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <PasswordBox x:Name="pbPass" HorizontalAlignment="Left" Margin="112,134,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
         <Button Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="112,175,0,0" Height="33" Click="Button_Click"/>
         <Label Content="         Welcome!&#xD;&#xA;&#x9;" HorizontalAlignment="Left" Margin="82,10,0,0" VerticalAlignment="Top" Width="177" FontSize="18" Height="35"/>
         <Label Content="This Program is currently under development, &#xD;&#xA;please enter the developer password to continue. " HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.464,-0.249" Width="340" HorizontalContentAlignment="Center" FontSize="10"/>
-        <TextBlock HorizontalAlignment="Left" Margin="75,246,0,0" VerticalAlignment="Top" Width="43" FontSize="10" RenderTransformOrigin="0.174,0.591">           
+        <TextBlock HorizontalAlignment="Left" Margin="95,293,0,0" VerticalAlignment="Top" Width="43" FontSize="10" RenderTransformOrigin="0.174,0.591">           
     <Hyperlink NavigateUri="https://github.com/gp177/BudgetApp" RequestNavigate="Hyperlink_RequestNavigate" >
         Click here
     </Hyperlink>
         </TextBlock>
-        <Label Content="to obtain a developer password!" HorizontalAlignment="Left" Margin="117,241,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Label Content="Register Now! to Obtain a Developer Password " HorizontalAlignment="Left" Margin="68,241,0,0" VerticalAlignment="Top" FontSize="10"/>
+        <Button x:Name="btRegister" Content="Register" HorizontalAlignment="Left" Margin="148,269,0,0" VerticalAlignment="Top" Width="50" Height="14" FontSize="8" Click="btRegister_Click"/>
+        <Label Content="To visit our GitHub project" HorizontalAlignment="Left" Margin="138,288,0,0" VerticalAlignment="Top" FontSize="10"/>
     </Grid>
 </Window>

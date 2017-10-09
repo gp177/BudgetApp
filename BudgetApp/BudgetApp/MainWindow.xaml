@@ -10,18 +10,25 @@
     <DockPanel LastChildFill="False">
 
         <Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top">
-            <MenuItem Header="File" Height="25" Width="48" FontSize="18"/>
+            <MenuItem Header="File" Height="25" Width="43" FontSize="18">
+                <MenuItem  x:Name="miSaveas" Header="Save As..." HorizontalAlignment="Left" Height="25" Width="156"/>
+                <MenuItem x:Name="miExit" Header="Exit" HorizontalAlignment="Left" Height="29" Width="156" Click="miExit_Click" />
+            </MenuItem>
             <MenuItem Header="Tools" Height="25" Width="53" FontSize="18"/>
+            <MenuItem Header="About" Height="25" Width="62" FontSize="18" />
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Top" Margin="0,147,0,0"/>
         <StackPanel DockPanel.Dock="Left" Margin="0,0,0,-142" Width="811">
             <Grid Margin="0,0,0,-147" Width="798">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="655*"/>
+                    <ColumnDefinition Width="114*"/>
                 </Grid.ColumnDefinitions>
 
-                <ListView Name="lvRecords" Margin="10,100,10,60" Grid.ColumnSpan="2"  >
+                <ListView Name="lvRecords" Margin="0,100,10,0" Grid.ColumnSpan="5" HorizontalAlignment="Right" Width="778" Height="560" VerticalAlignment="Top"  >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding Path=RecordId}"/>
@@ -34,18 +41,29 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Content="Add Record" HorizontalAlignment="Left" Margin="10,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Click="Button_Click"/>
-                <Button Content="Delete" HorizontalAlignment="Left" Margin="195,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
-                <Button Content="Edit" HorizontalAlignment="Left" Margin="380,680,0,0" VerticalAlignment="Top" Width="170" Height="40"/>
-                <DatePicker HorizontalAlignment="Left" Margin="58,58,0,0" VerticalAlignment="Top"/>
-                <DatePicker HorizontalAlignment="Left" Margin="191,58,0,0" VerticalAlignment="Top" />
-                <Label Content="From" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="43"/>
-                <Label Content="to" HorizontalAlignment="Left" Margin="165,56,0,0" VerticalAlignment="Top"/>
-                <Label Content="Type" HorizontalAlignment="Left" Margin="314,56,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Left" Margin="357,60,0,0" VerticalAlignment="Top" Width="120"/>
+                <Button Content="Add Record" HorizontalAlignment="Left" Margin="10,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Click="Button_Click" Grid.ColumnSpan="4"/>
+                <Button Content="Delete" HorizontalAlignment="Left" Margin="166,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Grid.Column="3"/>
+                <Button Content="Edit" HorizontalAlignment="Left" Margin="351,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Grid.Column="3"/>
+                <DatePicker HorizontalAlignment="Left" Margin="29,58,0,0" VerticalAlignment="Top" Grid.Column="3"/>
+                <DatePicker HorizontalAlignment="Left" Margin="162,58,0,0" VerticalAlignment="Top" Grid.Column="3" />
+                <Label Content="From" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="43" Grid.ColumnSpan="4"/>
+                <Label Content="to" HorizontalAlignment="Left" Margin="136,56,0,0" VerticalAlignment="Top" Grid.Column="3"/>
+                <Label Content="Type" HorizontalAlignment="Left" Margin="285,56,0,0" VerticalAlignment="Top" Grid.Column="3"/>
+                <ComboBox HorizontalAlignment="Left" Margin="328,60,0,0" VerticalAlignment="Top" Width="120" Grid.Column="3"/>
+                <Button Content="Advanced Search" Grid.Column="3" HorizontalAlignment="Left" Margin="490,60,0,0" VerticalAlignment="Top" Width="137" Height="22" Click="Button_Click_1"/>
             </Grid>
-            
+
         </StackPanel>
+        <GridSplitter Height="742" VerticalAlignment="Top" Width="11" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-146">
+            <GridSplitter.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.105"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </GridSplitter.RenderTransform>
+        </GridSplitter>
     </DockPanel>
 
 </Window>

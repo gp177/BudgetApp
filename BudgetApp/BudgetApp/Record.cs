@@ -95,7 +95,11 @@ namespace BudgetApp
 
             set
             {
-                _AccountNumber = value;
+                if (value <= 0 || value >= 999999999999999999) {
+
+                    _AccountNumber = value;
+                }
+               
             }
         }
 
@@ -108,7 +112,7 @@ namespace BudgetApp
 
             set
             {
-                if ((value <= 0) || value > 2147483645)
+                if ((value <= 0) || value > 999999999999999999)
                     throw new ArgumentOutOfRangeException("Amount must be in range");
 
                 else

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="AddCategory" Height="148.623" Width="214.679">
+        Title="AddCategory" Height="148.623" Width="214.679" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="tbAddCategorySQL" HorizontalAlignment="Left" Height="23" Margin="25,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="75,10,0,0" VerticalAlignment="Top"/>
