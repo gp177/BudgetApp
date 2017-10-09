@@ -11,13 +11,17 @@ namespace BudgetApp
     {
         // fields encapsulated
 
-       // Records table
-        public int RecordId{get; set;}
+        // Records table
+        public int RecordId { get; set; }
         private DateTime _Date;
         private double _Amount;
-           
+
         private Image _Document;
-   
+        //new field!!!
+        public string RecordType{get;set;}
+        public string AccountStr { get; set;}
+        public string CategoryStr { get; set;}
+
         // Accounts table
         public int AccountId { get; set; }
         private String _AccountType;

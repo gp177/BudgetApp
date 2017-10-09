@@ -76,6 +76,7 @@ create table Records
 	Document varbinary(max),
 	AccountId int not null,
 	CategoryId int not null,
+	RecordType nvarchar(10) not null
 	Constraint pk_Records primary key clustered (RecordId asc)
 )
 ;

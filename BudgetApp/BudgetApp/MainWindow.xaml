@@ -24,10 +24,10 @@
                 <ListView Name="lvRecords" Margin="10,100,10,60" Grid.ColumnSpan="2"  >
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding Path=Id}"/>
-                            <GridViewColumn Header="Account" DisplayMemberBinding="{Binding Path=Account}"/>
-                            <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path=Category}"/>
-                            <GridViewColumn Header="RecType" DisplayMemberBinding="{Binding Path=RecType}"/>
+                            <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding Path=RecordId}"/>
+                            <GridViewColumn Header="Account" DisplayMemberBinding="{Binding Path=AccountStr}"/>
+                            <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path=CategoryStr}"/>
+                            <GridViewColumn Header="RecType" DisplayMemberBinding="{Binding Path=RecordType}"/>
                             <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=Tags}"/>
                             <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path=Amount}"/>
                             <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Date}"/>

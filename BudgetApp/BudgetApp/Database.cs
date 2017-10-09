@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace BudgetApp
 {
@@ -20,17 +21,47 @@ namespace BudgetApp
             conn.Open();
         }
 
-      
 
-        //public void AddRecord(Record r)
-        //{
-        //    SqlCommand insertCommand = new SqlCommand("INSERT INTO Record (Name,Age,Height) VALUES (@Amount,@Date)", conn);
-        //    insertCommand.Parameters.Add(new SqlParameter("Amount", r._Amount));
-        //    insertCommand.Parameters.Add(new SqlParameter("Date", r._Date));
-        //    insertCommand.Parameters.Add(new SqlParameter("Height", height));
-        //    insertCommand.ExecuteNonQuery();
-        //}
+        //add record to DB
+        public void AddRecord(Record r)
+        {
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Records (Date,Amount,AccountId,CategoryId,RecordType) VALUES (@Date,@Amount,@AccountId,@CategoryId,@RecordType)", conn);
+            insertCommand.Parameters.Add(new SqlParameter("Date", r.Date));
+            insertCommand.Parameters.Add(new SqlParameter("Amount", r.Amount));
+            insertCommand.Parameters.Add(new SqlParameter("AccountId", r.AccountId));
+            insertCommand.Parameters.Add(new SqlParameter("CategoryId", r.CategoryId));
+            insertCommand.Parameters.Add(new SqlParameter("RecordType", r.RecordType));
+            insertCommand.ExecuteNonQuery();
+        }
+        //end
+        //get Record 
+        public List<Record> GetRecord()
+        {
+            List<Record> AccList = new List<Record>();
+            SqlCommand selectCommand = new SqlCommand("Select Records.RecordId,Accounts.AccountName,Category.CategoryType, Records.Date,Records.Amount,Records.RecordType from Records Inner Join Accounts  On Records.AccountId = Accounts.AccountId Inner Join Category On Records.CategoryId = Category.CategoryId", conn);
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Record rec = new Record();
+                    rec.RecordId =(int)reader["RecordId"];
+                    rec.AccountStr = (string)reader["AccountName"];
+                    rec.CategoryStr = (string)reader["CategoryType"];
+                    rec.Date = (DateTime)reader["Date"];
+                    rec.Amount = Convert.ToDouble(reader["Amount"]);
+                   // rec.Document = (Image)reader["Document"];
+                    //rec.AccountId= (int)reader["AccountId"];
+                    //rec.CategoryId= (int)reader["CategoryId"];
+                    rec.RecordType = (string)reader["RecordType"];
+                    AccList.Add(rec);
 
+                }
+            }
+            return AccList;
+        }
+
+
+        //end
 
         public void AddCategory(String CategoryType)
         {
@@ -39,18 +70,19 @@ namespace BudgetApp
             insertCommand.ExecuteNonQuery();
         }
 
-        public List<Record> GetCategories()
+        public List<String> GetCategories()
         {
-            List<Record> CatList = new List<Record>();
+            List<String> CatList = new List<String>();
             SqlCommand selectCommand = new SqlCommand("SELECT CategoryType FROM Category", conn);
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     String xCategoryType = (String)reader["CategoryType"];
-                    Record rec = new Record { CategoryType = xCategoryType };
 
-                    CatList.Add(rec);
+                    //Record rec = new Record { CategoryType = xCategoryType };
+
+                    CatList.Add(xCategoryType);
 
                 }
             }
@@ -88,6 +120,63 @@ namespace BudgetApp
             insertCommand.Parameters.Add(new SqlParameter("Name", AccountName));
             insertCommand.ExecuteNonQuery();
         }
+        //get Account ID for inserting in Record
+        public int  GetAccountID(String AccName)
+        {
+            int id=0;
+            SqlCommand selectCommand = new SqlCommand("SELECT AccountID FROM Accounts Where AccountName=@AccountName", conn);
+            selectCommand.Parameters.Add(new SqlParameter("AccountName", AccName));
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
+
+                while (reader.Read())
+                {
+                    id = (int)reader[0];
+                }
+            }
+            return id;
+        }
+        //get account name by id
+        //public string GetAccbyID(int AccId)
+        //{
+        //    string name="";
+        //    SqlCommand selectCommand = new SqlCommand("SELECT AccountName FROM Accounts Where AccountId=@AccountId", conn);
+        //    selectCommand.Parameters.Add(new SqlParameter("AccountName", AccId));
+        //    using (SqlDataReader reader = selectCommand.ExecuteReader())
+        //    {
+
+        //        while (reader.Read())
+        //        {
+        //            name = (string)reader[0];
+        //        }
+        //    }
+        //    return name;
+        //}
+        //end 
+
+        //get Account ID for inserting in Record
+        public int GetCategoryID(String CatType)
+        {
+            int id=0;
+            SqlCommand selectCommand = new SqlCommand("SELECT CategoryId FROM Category Where CategoryType=@CatType", conn);
+            selectCommand.Parameters.Add(new SqlParameter("CatType", CatType));
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
+            
+                while (reader.Read())
+                {
+                    id = (int)reader[0];
+
+                }
+            }
+            return id;
+        }
+        //end 
+
+
+
+
+
 
         public List<Record> GetAccounts()
         {

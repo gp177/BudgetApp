@@ -30,11 +30,11 @@ namespace BudgetApp
 
         private void reloadCategoryList()
         {
-            List<Record> list = db.GetCategories();
+            List<String> list = db.GetCategories();
             cbCategory.Items.Clear();
-            foreach (Record rec in list)
+            foreach (String rec in list)
             {
-                cbCategory.Items.Add(rec.CategoryType);
+                cbCategory.Items.Add(rec);
                
             }
         }
@@ -70,18 +70,31 @@ namespace BudgetApp
 
         private void btAddRecord_Click(object sender, RoutedEventArgs e)
         {
+
+            Record r = new Record();
             // values from user inputs
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
             String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
             String Tags = tbTags.Text;
+            int AccId = db.GetAccountID(Account);
+            int CatId = db.GetCategoryID(Category);
             int Amount = int.Parse(tbBalance.Text);
             DateTime Date = DateTime.Parse(DatePick.Text);
 
+            r.Date = Date;
+            r.Amount = Amount;
+            r.AccountId = AccId;
+            r.CategoryId = CatId;
+            r.RecordType = RecType;
+            db.AddRecord(r);
+
+
+
 
             db.AddTags(Tags);
-            db.AddAmount(Amount);
-            db.AddDate(Date);
+            //db.AddAmount(Amount);
+            //db.AddDate(Date);
             
         }
     }

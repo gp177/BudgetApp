@@ -41,12 +41,15 @@ namespace BudgetApp
         }
         private void reloadAccList()
         {
-            List<Record> list = db.GetAccounts();
+            List<Record> list = db.GetRecord();
+           
             lvRecords.Items.Clear();
             foreach(Record r in list)
             {
+                
                 lvRecords.Items.Add(r);
             }
+            
 
         }
 
