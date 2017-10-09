@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace BudgetApp
 {
     /// <summary>
@@ -55,7 +56,14 @@ namespace BudgetApp
         {
             AddRecord rec = new AddRecord();
             rec.Show();
+            
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AdvancedSearch advSearch = new AdvancedSearch();
+            advSearch.Show();
         }
     }
 }

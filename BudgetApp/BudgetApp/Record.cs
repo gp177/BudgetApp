@@ -141,14 +141,14 @@ namespace BudgetApp
 
             set
             {
-                if ((value.Length <= 0) || value.Length > 60)
-                {
-                    throw new ArgumentOutOfRangeException("Category Type must be in between 1-60 Characters");
-                }
-                else
-                {
+                //if ((value.Length <= 0) || value.Length > 60)
+                //{
+                //    throw new ArgumentOutOfRangeException("Category Type must be in between 1-60 Characters");
+                //}
+              //  else
+                //{
                     _CategoryType = value;
-                }
+                //}
             }
         }
 
