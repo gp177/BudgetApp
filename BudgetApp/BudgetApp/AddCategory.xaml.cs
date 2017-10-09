@@ -38,10 +38,16 @@ namespace BudgetApp
 
         private void btAddCategorySQL_Click(object sender, RoutedEventArgs e)
         {
-            String category = tbAddCategorySQL.Text;
+            try
+            {
+                String category = tbAddCategorySQL.Text;
 
-            db.AddCategory(category);
-            this.Close();
+                db.AddCategory(category);
+                this.Close();
+            } catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

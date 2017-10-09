@@ -19,9 +19,35 @@ namespace BudgetApp
     /// </summary>
     public partial class AdvancedSearch : Window
     {
+        Database db;
+
+      
         public AdvancedSearch()
         {
+            db = new Database();
             InitializeComponent();
+            reloadAccountList();
+            reloadCategoryList();
+        }
+
+        private void reloadAccountList()
+        {
+            List<Record> list = db.GetAccounts();
+            cbAccount.Items.Clear();
+            foreach (Record rec in list)
+            {
+                cbAccount.Items.Add(rec.AccountName);
+            }
+        }
+        private void reloadCategoryList()
+        {
+            List<Record> list = db.GetCategories();
+            cbCategory.Items.Clear();
+            foreach (Record rec in list)
+            {
+                cbCategory.Items.Add(rec.CategoryType);
+
+            }
         }
     }
 }

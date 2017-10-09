@@ -91,7 +91,11 @@ namespace BudgetApp
 
             set
             {
-                _AccountNumber = value;
+                if (value <= 0 || value >= 999999999999999999) {
+
+                    _AccountNumber = value;
+                }
+               
             }
         }
 
@@ -104,7 +108,7 @@ namespace BudgetApp
 
             set
             {
-                if ((value <= 0) || value > 2147483645)
+                if ((value <= 0) || value > 999999999999999999)
                     throw new ArgumentOutOfRangeException("Amount must be in range");
 
                 else
@@ -141,14 +145,14 @@ namespace BudgetApp
 
             set
             {
-                //if ((value.Length <= 0) || value.Length > 60)
-                //{
-                //    throw new ArgumentOutOfRangeException("Category Type must be in between 1-60 Characters");
-                //}
-              //  else
-                //{
+                if ((value.Length <= 0) || value.Length > 60)
+                {
+                    throw new ArgumentOutOfRangeException("Category Type must be in between 1-60 Characters");
+                }
+                else
+                {
                     _CategoryType = value;
-                //}
+                }
             }
         }
 
