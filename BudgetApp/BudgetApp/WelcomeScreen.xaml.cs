@@ -50,5 +50,10 @@ namespace BudgetApp
             e.Handled = true;
         }
 
+        private void btRegister_Click(object sender, RoutedEventArgs e)
+        {
+            WelcomeRegister welReg = new WelcomeRegister();
+            welReg.Show();
+        }
     }
 }
