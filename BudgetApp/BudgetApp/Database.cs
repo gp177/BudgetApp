@@ -22,23 +22,25 @@ namespace BudgetApp
         }
 
 
-        //add record to DB
-        public void AddRecord(Record r)
+        //Work with Records Table
+
+        public int AddRecord(Record r)
         {
-            SqlCommand insertCommand = new SqlCommand("INSERT INTO Records (Date,Amount,AccountId,CategoryId,RecordType) VALUES (@Date,@Amount,@AccountId,@CategoryId,@RecordType)", conn);
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Records (Date,Amount,AccountId,CategoryId,RecordType) OUTPUT INSERTED.RecordId VALUES (@Date,@Amount,@AccountId,@CategoryId,@RecordType)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Date", r.Date));
             insertCommand.Parameters.Add(new SqlParameter("Amount", r.Amount));
             insertCommand.Parameters.Add(new SqlParameter("AccountId", r.AccountId));
             insertCommand.Parameters.Add(new SqlParameter("CategoryId", r.CategoryId));
             insertCommand.Parameters.Add(new SqlParameter("RecordType", r.RecordType));
-            insertCommand.ExecuteNonQuery();
+            //insertCommand.ExecuteNonQuery();
+            int addedId = (int)insertCommand.ExecuteScalar();
+            return addedId;
         }
-        //end
-        //get Record 
+      
         public List<Record> GetRecord()
         {
             List<Record> AccList = new List<Record>();
-            SqlCommand selectCommand = new SqlCommand("Select Records.RecordId,Accounts.AccountName,Category.CategoryType, Records.Date,Records.Amount,Records.RecordType from Records Inner Join Accounts  On Records.AccountId = Accounts.AccountId Inner Join Category On Records.CategoryId = Category.CategoryId", conn);
+            SqlCommand selectCommand = new SqlCommand("Select Records.RecordId,Accounts.AccountName,Category.CategoryType,Tag.Description, Records.Date,Records.Amount,Records.RecordType from Records Inner Join Accounts  On Records.AccountId = Accounts.AccountId Inner Join Category On Records.CategoryId = Category.CategoryId Inner Join InterTag On Records.RecordId = InterTag.RecordId Inner Join Tag On InterTag.TagId = Tag.TagId", conn);
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -49,7 +51,7 @@ namespace BudgetApp
                     rec.CategoryStr = (string)reader["CategoryType"];
                     rec.Date = (DateTime)reader["Date"];
                     rec.Amount = Convert.ToDouble(reader["Amount"]);
-                   // rec.Document = (Image)reader["Document"];
+                    rec.TegDesctiption = (string)reader["Description"];
                     //rec.AccountId= (int)reader["AccountId"];
                     //rec.CategoryId= (int)reader["CategoryId"];
                     rec.RecordType = (string)reader["RecordType"];
@@ -59,7 +61,21 @@ namespace BudgetApp
             }
             return AccList;
         }
+        public int GetRecordID(String AccName)
+        {
+            int id = 0;
+            SqlCommand selectCommand = new SqlCommand("SELECT AccountID FROM Accounts Where AccountName=@AccountName", conn);
+            selectCommand.Parameters.Add(new SqlParameter("AccountName", AccName));
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
 
+                while (reader.Read())
+                {
+                    id = (int)reader[0];
+                }
+            }
+            return id;
+        }
 
         //end
 
@@ -89,11 +105,25 @@ namespace BudgetApp
             return CatList;
         }
 
-      public void AddTags(String Description)
+      public int AddTags(String Description)
         {
-            SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) VALUES (@Description)", conn);
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) OUTPUT INSERTED.TagId VALUES (@Description)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Description", Description));
+            //insertCommand.ExecuteNonQuery();
+            int addedId = (int)insertCommand.ExecuteScalar();
+            return addedId;
+
+        }
+        //InterTag table
+        public void AddInterTeg(int TagId, int RecordId)
+        {
+            SqlCommand insertCommand = new SqlCommand("INSERT INTO InterTag (TagId,RecordId) VALUES (@TagId,@RecordId)", conn);
+            insertCommand.Parameters.Add(new SqlParameter("TagId",TagId));
+            insertCommand.Parameters.Add(new SqlParameter("RecordId", RecordId));
+            //insertCommand.ExecuteNonQuery();
             insertCommand.ExecuteNonQuery();
+
+
         }
 
 

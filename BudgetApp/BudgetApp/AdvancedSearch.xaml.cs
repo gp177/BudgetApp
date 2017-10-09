@@ -41,11 +41,11 @@ namespace BudgetApp
         }
         private void reloadCategoryList()
         {
-            List<Record> list = db.GetCategories();
+            List<String> list = db.GetCategories();
             cbCategory.Items.Clear();
-            foreach (Record rec in list)
+            foreach (String rec in list)
             {
-                cbCategory.Items.Add(rec.CategoryType);
+                cbCategory.Items.Add(list);
 
             }
         }

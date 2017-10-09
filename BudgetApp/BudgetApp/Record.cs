@@ -21,6 +21,7 @@ namespace BudgetApp
         public string RecordType{get;set;}
         public string AccountStr { get; set;}
         public string CategoryStr { get; set;}
+        public string TegDesctiption { get; set; }
 
         // Accounts table
         public int AccountId { get; set; }

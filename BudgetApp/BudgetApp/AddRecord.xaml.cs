@@ -75,27 +75,28 @@ namespace BudgetApp
             // values from user inputs
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
-            
+            String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
             String Tags = tbTags.Text;
             int AccId = db.GetAccountID(Account);
             int CatId = db.GetCategoryID(Category);
             int Amount = int.Parse(tbBalance.Text);
             DateTime Date = DateTime.Parse(DatePick.Text);
-
+           
             r.Date = Date;
             r.Amount = Amount;
             r.AccountId = AccId;
             r.CategoryId = CatId;
             r.RecordType = RecType;
-            db.AddRecord(r);
+            int tagid = db.AddTags(Tags);
+            int recId = db.AddRecord(r);
+            db.AddInterTeg(tagid, recId);
+           
 
 
 
-
-            db.AddTags(Tags);
             //db.AddAmount(Amount);
             //db.AddDate(Date);
-            
+
         }
     }
 }

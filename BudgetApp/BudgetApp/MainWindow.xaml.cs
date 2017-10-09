@@ -40,7 +40,7 @@ namespace BudgetApp
                 MessageBox.Show("DataBese error" + ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        private void reloadAccList()
+        public  void reloadAccList()
         {
             List<Record> list = db.GetRecord();
            
