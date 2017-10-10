@@ -12,8 +12,9 @@
         <Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top">
             <MenuItem Header="File" Height="25" Width="43" FontSize="18">
                 <MenuItem  x:Name="miSaveas" Header="Save As..." HorizontalAlignment="Left" Height="29" Width="156"/>
+                <MenuItem x:Name="miPrint" Header="Print" HorizontalAlignment="Left" Height="29" Width="156" Click="miPrint_Click" Margin="-1,0,0,0"/>
                 <MenuItem x:Name="miExit" Header="Exit" HorizontalAlignment="Left" Height="29" Width="156" Click="miExit_Click" />
-                <MenuItem x:Name="miPrint" Header="Print" HorizontalAlignment="Left" Height="29" Width="156" Click="miPrint_Click"/>
+                
             </MenuItem>
             <MenuItem Header="Tools" Height="25" Width="53" FontSize="18"/>
             <MenuItem Header="About" Height="25" Width="62" FontSize="18" />

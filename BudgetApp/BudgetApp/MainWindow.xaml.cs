@@ -90,63 +90,19 @@ namespace BudgetApp
 
 
 
-                private void miPrint_Click(object sender, RoutedEventArgs e)
+      private void miPrint_Click(object sender, RoutedEventArgs e)
         {
-            printDialog1.Document = printDocument1;
-                 string strText = "";
-                 foreach (object x in lvRecords.Items)
-                     {
-                         strText = strText + x.ToString() + "\n";
-                     }
-            
-                    myReader = new StringReader(strText);
-                 if (printDialog1.ShowDialog() == DialogResult.OK)
-                     {
-                         this.printDocument1.Print();
-                     }
+            PrintDialog printDialog = new PrintDialog();
 
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(lvRecords, "List Items Print");
+            }
 
         }
        
 
-        protected void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
-        {
-
-          
-            float linesPerPage = 0;
-            float yPosition = 0;
-            int count = 0;
-            float leftMargin = e.MarginBounds.Left;
-            float topMargin = e.MarginBounds.Top;
-            Font printFont = this.lvRecords.Items.Font;
-            string line = null;
-
-           
-            SolidBrush myBrush = new SolidBrush(System.Drawing.Color.Black);
-
-
-            linesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
-            //  using the StringReader, printing each line.
-            while (count < linesPerPage && ((line = myReader.ReadLine()) != null))
-            {
-                // calculate the next line position 
-                yPosition = topMargin + (count * printFont.GetHeight(e.Graphics));
-
-                // draw the next line in the rich edit control
-
-                e.Graphics.DrawString(line, printFont,
-                                       myBrush, leftMargin,
-                                       yPosition, new StringFormat());
-                count++;
-            }
-
-            if (line != null)
-                e.HasMorePages = true;
-            else
-                e.HasMorePages = false;
-
-            myBrush.Dispose();
-        }
+       
 
        
     }
