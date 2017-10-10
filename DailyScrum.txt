@@ -37,3 +37,13 @@ Create atleast three user stories on trello, break them down in todo items.
 1. Finished Add Category, connected it with database, Finalized the WeclomeScreen, Fixed Account fields in Records class.
 2. Connect the two comboBoxes to the database, Finish the CRUD functionality in the Database class, Work on MainWindow.
 3. Get help for window design of MainWindow and charts, Research Online more about certain libraries.
+
+
+
+
+10/10/2017 Giorgio Plescia,
+1. Finished Welcome and Registration UI with functionality, added arguments with try catches around user data. Finished Syncing all data
+to export to Listview fom database, added get data methods in database class.
+2. Fix the records class, learn how to use binary image saving from database, add functional calendar from NuGet, start creating graphs/chart generation
+and finish up CRUD functionality.
+3. How to properly use libraries, Bug fixing, ask about certain changes in Record and database class.
