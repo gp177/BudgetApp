@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="Budget Application" Height="819" Width="1100.5" WindowStartupLocation="CenterScreen">
+        Title="Budget Application" Height="819" Width="1214.5" WindowStartupLocation="CenterScreen">
 
     <DockPanel LastChildFill="False">
 
@@ -14,7 +14,7 @@
                 <MenuItem  x:Name="miSaveas" Header="Save As..." HorizontalAlignment="Left" Height="29" Width="156"/>
                 <MenuItem x:Name="miPrint" Header="Print" HorizontalAlignment="Left" Height="29" Width="156" Click="miPrint_Click" Margin="-1,0,0,0"/>
                 <MenuItem x:Name="miExit" Header="Exit" HorizontalAlignment="Left" Height="29" Width="156" Click="miExit_Click" />
-                
+
             </MenuItem>
             <MenuItem Header="Tools" Height="25" Width="53" FontSize="18">
                 <MenuItem Header="Scanner" HorizontalAlignment="Left" Height="29" Width="156" Click="MenuItem_Click"/>
@@ -68,6 +68,20 @@
                 </TransformGroup>
             </GridSplitter.RenderTransform>
         </GridSplitter>
+        <StackPanel Margin="0,0,0,-147">
+            <Canvas Height="264" VerticalAlignment="Bottom" Width="364" Margin="0,0,0,332">
+                <TextBox x:Name="txtSymbol1" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="34" Width="120"/>
+                <TextBox x:Name="txtSymbol2" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="78" Width="120"/>
+                <TextBox x:Name="txtSymbol3" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="120" Width="120"/>
+                <TextBox x:Name="txtSymbol4" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="159" Width="120"/>
+                <TextBox x:Name="txtPrice1" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="34" Width="120" IsReadOnly="True"/>
+                <TextBox x:Name="txtPrice2" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="78" Width="120" IsReadOnly="True"/>
+                <TextBox x:Name="txtPrice3" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="121" Width="120" IsReadOnly="True"/>
+                <TextBox x:Name="txtPrice4" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="160" Width="120" IsReadOnly="True"/>
+                <Button x:Name="btnGetPrices" Content="Get prices" Canvas.Left="139" Canvas.Top="214" Width="74" Click="btnGetPrices_Click"/>
+            </Canvas>
+            
+        </StackPanel>
     </DockPanel>
 
 </Window>
