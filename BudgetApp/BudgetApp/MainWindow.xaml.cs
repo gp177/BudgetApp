@@ -73,5 +73,22 @@ namespace BudgetApp
         {
             Environment.Exit(0);
         }
+
+        private void btDeleteRecord_Click(object sender, RoutedEventArgs e)
+        {
+        int items = lvRecords.SelectedItems.Count;
+        if (MessageBox.Show("Are you sure yo want to delete "+items+" record(s)", "Delete record", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No)==MessageBoxResult.No)
+            { return;}
+            else
+             {
+                foreach (Record r in lvRecords.SelectedItems)
+                {
+                    db.deleteInterTag(r.RecordId);
+                    db.DeleteRecord(r.RecordId);
+                }
+                reloadAccList();
+            }
+
+        }
     }
 }

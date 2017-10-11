@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="114*"/>
                 </Grid.ColumnDefinitions>
 
-                <ListView Name="lvRecords" Margin="0,100,10,0" Grid.ColumnSpan="5" HorizontalAlignment="Right" Width="778" Height="560" VerticalAlignment="Top"  >
+                <ListView Name="lvRecords" Margin="0,100,10,0" Grid.ColumnSpan="5" HorizontalAlignment="Right" Width="778" Height="560" SelectionMode="Multiple" VerticalAlignment="Top"  >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding Path=RecordId}"/>
@@ -42,8 +42,8 @@
                     </ListView.View>
                 </ListView>
                 <Button Content="Add Record" HorizontalAlignment="Left" Margin="10,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Click="Button_Click" Grid.ColumnSpan="4"/>
-                <Button Content="Delete" HorizontalAlignment="Left" Margin="166,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Grid.Column="3"/>
-                <Button Content="Edit" HorizontalAlignment="Left" Margin="351,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Grid.Column="3"/>
+                <Button Name="btDeleteRecord" Content="Delete" HorizontalAlignment="Left" Margin="166,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Grid.Column="3" Click="btDeleteRecord_Click"/>
+                <Button Name ="btEditRecord" Content="Edit" HorizontalAlignment="Left" Margin="351,680,0,0" VerticalAlignment="Top" Width="170" Height="40" Grid.Column="3"/>
                 <DatePicker HorizontalAlignment="Left" Margin="29,58,0,0" VerticalAlignment="Top" Grid.Column="3"/>
                 <DatePicker HorizontalAlignment="Left" Margin="162,58,0,0" VerticalAlignment="Top" Grid.Column="3" />
                 <Label Content="From" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="43" Grid.ColumnSpan="4"/>

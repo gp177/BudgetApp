@@ -36,7 +36,7 @@ namespace BudgetApp
             int addedId = (int)insertCommand.ExecuteScalar();
             return addedId;
         }
-      
+
         public List<Record> GetRecord()
         {
             List<Record> AccList = new List<Record>();
@@ -46,7 +46,7 @@ namespace BudgetApp
                 while (reader.Read())
                 {
                     Record rec = new Record();
-                    rec.RecordId =(int)reader["RecordId"];
+                    rec.RecordId = (int)reader["RecordId"];
                     rec.AccountStr = (string)reader["AccountName"];
                     rec.CategoryStr = (string)reader["CategoryType"];
                     rec.Date = (DateTime)reader["Date"];
@@ -76,7 +76,12 @@ namespace BudgetApp
             }
             return id;
         }
-
+        public void DeleteRecord(int id)
+        {
+            SqlCommand deleteCommand = new SqlCommand("DELETE FROM  Records where RecordId=@id", conn);
+            deleteCommand.Parameters.Add(new SqlParameter("id", id));
+            deleteCommand.ExecuteNonQuery();
+        }
         //end
 
         public void AddCategory(String CategoryType)
@@ -105,7 +110,7 @@ namespace BudgetApp
             return CatList;
         }
 
-      public int AddTags(String Description)
+        public int AddTags(String Description)
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) OUTPUT INSERTED.TagId VALUES (@Description)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Description", Description));
@@ -118,15 +123,19 @@ namespace BudgetApp
         public void AddInterTeg(int TagId, int RecordId)
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO InterTag (TagId,RecordId) VALUES (@TagId,@RecordId)", conn);
-            insertCommand.Parameters.Add(new SqlParameter("TagId",TagId));
+            insertCommand.Parameters.Add(new SqlParameter("TagId", TagId));
             insertCommand.Parameters.Add(new SqlParameter("RecordId", RecordId));
             //insertCommand.ExecuteNonQuery();
             insertCommand.ExecuteNonQuery();
 
 
         }
-
-
+        public void deleteInterTag(int id) { 
+        SqlCommand deleteCommand = new SqlCommand("DELETE FROM InterTag where RecordId=@id", conn);
+        deleteCommand.Parameters.Add(new SqlParameter("id", id));
+        deleteCommand.ExecuteNonQuery();
+}
+        //end
 
         public void AddAmount(int Amount)
         {
