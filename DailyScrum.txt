@@ -53,4 +53,9 @@ and finish up CRUD functionality.
 2.finish Crud working on list filtering
 3.discuss with teammate concept of Tag table in Database, ask teacher how better implement many to many  Database rellationship in application
 
+11/10/2017 Giorgio Plescia,
+1. Fixed and finished Printing record functionality, Added UI design changes, and Started Scanning functionality
+2.Finish the Scanning, Add exchange rate and stock api's, Create event Calendar.
+3. Help on Design in Xaml and how to properly input the calendar.
+
 
