@@ -16,7 +16,9 @@
                 <MenuItem x:Name="miExit" Header="Exit" HorizontalAlignment="Left" Height="29" Width="156" Click="miExit_Click" />
                 
             </MenuItem>
-            <MenuItem Header="Tools" Height="25" Width="53" FontSize="18"/>
+            <MenuItem Header="Tools" Height="25" Width="53" FontSize="18">
+                <MenuItem Header="Scanner" HorizontalAlignment="Left" Height="29" Width="156" Click="MenuItem_Click"/>
+            </MenuItem>
             <MenuItem Header="About" Height="25" Width="62" FontSize="18" />
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Top" Margin="0,147,0,0"/>
