@@ -32,21 +32,27 @@ namespace BudgetApp
             String occupation = tbOccupation.Text;
             String country = tbCountry.Text;
             String about = tbAbout.Text;
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress(email);
+                mail.To.Add("gp.rci1@gmail.com");
+                mail.Subject = "Developer Password Request";
+                mail.Body = string.Format("Full Name: {0},  Email: {1},  Occupation: {2},  Country: {3},  About: {4}", fullName, email, occupation, country, about);
 
-            mail.From = new MailAddress(email);
-            mail.To.Add("gp.rci1@gmail.com");
-            mail.Subject = "Developer Password Request";
-            mail.Body = string.Format("Full Name: {0},  Email: {1},  Occupation: {2},  Country: {3},  About: {4}", fullName, email, occupation, country, about);
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("budgetappprogram@gmail.com", "AG1project");
+                SmtpServer.EnableSsl = true;
 
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("budgetappprogram@gmail.com", "AG1project");
-            SmtpServer.EnableSsl = true;
-
-            SmtpServer.Send(mail);
-            MessageBox.Show("mail Send");
+                SmtpServer.Send(mail);
+                MessageBox.Show("Request Sent, Estimated wait time 3-4 Days.");
+            }
+            catch (SmtpException ex)
+            {
+                MessageBox.Show("Registration Sending Failed", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

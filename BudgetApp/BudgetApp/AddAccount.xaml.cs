@@ -40,10 +40,16 @@ namespace BudgetApp
             String name = tbAccountName.Text;
             String type = tbAccountType.Text;
             double balance = Double.Parse(tbBalance.Text);
-            int number = int.Parse(tbAccountNumber.Text);
-            db.AddAccount(name, type, number, balance);
-            this.Close();
-
+            try
+            {
+                int number = int.Parse(tbAccountNumber.Text);
+                db.AddAccount(name, type, number, balance);
+                this.Close();
+            }
+             catch(ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
        
