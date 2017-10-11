@@ -174,8 +174,8 @@ namespace BudgetApp
             image = imgProcess.Apply(image);
             image.SaveFile(fileName);
 
-<<<<<<< HEAD
-=======
+
+
         }
 
         // Get a web response.
@@ -244,8 +244,40 @@ namespace BudgetApp
                 }
             }
 
-            //this.Cursor = Cursors.Default;
->>>>>>> eca875535aedae72f7ca9dd9054f5c971aa94117
+        }
+
+        public string CurrencyConversion(decimal amount, string fromCurrency, string toCurrency)
+        {
+            string Output = "";
+            string fromCurrency1 = tbCurrency1.Text; 
+            string toCurrency1 = tbCurrency2.Text; 
+            decimal amount1 = Convert.ToDecimal(tbResult.Text); 
+
+            // For other currency symbols see http://finance.yahoo.com/currency-converter/
+            // Construct URL to query the Yahoo! Finance API
+
+            const string urlPattern = "http://finance.yahoo.com/d/quotes.csv?s={0}{1}=X&f=l1";
+            string url = string.Format(urlPattern, fromCurrency1, toCurrency1);
+
+            // Get response as string
+            string response = new WebClient().DownloadString(url);
+
+            // Convert string to number
+            decimal exchangeRate = decimal.Parse(response, System.Globalization.CultureInfo.InvariantCulture);
+
+            // Output the result
+            Output = (amount1 * exchangeRate).ToString();
+            //textBox2.Text = Output;
+            lbResult.Content = Output;
+            
+            return Output;
+        }
+
+        private void btCurrency_Click(object sender, RoutedEventArgs e)
+        {
+              CurrencyConversion(new decimal(123.45), "CAD", "USD");
+            
+            
         }
     }
 }
