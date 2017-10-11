@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="AddRecord" Height="280.58" Width="409.821" ResizeMode="NoResize">
+        Title="AddRecord" Height="280.58" Width="409.821" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,10,8">
         <Label Content="Account" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>

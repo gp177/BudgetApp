@@ -43,7 +43,7 @@ namespace BudgetApp
                 mail.Body = string.Format("Full Name: {0},  Email: {1},  Occupation: {2},  Country: {3},  About: {4}", fullName, email, occupation, country, about);
 
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("budgetappprogram@gmail.com", "AG1project");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("budgetappprogram@gmail.com", "gpgpgpgpgp");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);

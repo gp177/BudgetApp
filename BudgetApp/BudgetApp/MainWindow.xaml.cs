@@ -62,7 +62,7 @@ namespace BudgetApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddRecord rec = new AddRecord();
-            rec.Show();
+            rec.ShowDialog();
 
 
         }
@@ -78,14 +78,14 @@ namespace BudgetApp
             Environment.Exit(0);
         }
 
-<<<<<<< HEAD
+
         private void btDeleteRecord_Click(object sender, RoutedEventArgs e)
         {
-        int items = lvRecords.SelectedItems.Count;
-        if (MessageBox.Show("Are you sure yo want to delete "+items+" record(s)", "Delete record", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No)==MessageBoxResult.No)
-            { return;}
+            int items = lvRecords.SelectedItems.Count;
+            if (MessageBox.Show("Are you sure yo want to delete " + items + " record(s)", "Delete record", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.No)
+            { return; }
             else
-             {
+            {
                 foreach (Record r in lvRecords.SelectedItems)
                 {
                     db.deleteInterTag(r.RecordId);
@@ -93,8 +93,8 @@ namespace BudgetApp
                 }
                 reloadAccList();
             }
+        }
 
-=======
         private void MainWindow_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < 10; i++)
@@ -171,7 +171,7 @@ namespace BudgetApp
             SetWIAProperty(imgProcess.Filters[imgProcess.Filters.Count].Properties, "FormatID", WIA.FormatID.wiaFormatPNG);
             image = imgProcess.Apply(image);
             image.SaveFile(fileName);
->>>>>>> d5daacc57c7951bc41cdac02d10af33d0bc67097
+
         }
     }
 }

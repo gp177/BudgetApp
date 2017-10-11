@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="WelcomeScreen" Height="362.621" Width="366.654" ResizeMode="CanMinimize">
+        Title="WelcomeScreen" Height="362.621" Width="366.654" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Password" Margin="112,87,128,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <PasswordBox x:Name="pbPass" HorizontalAlignment="Left" Margin="112,134,0,0" VerticalAlignment="Top" Width="120" Height="23"/>

@@ -24,13 +24,13 @@
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Top" Margin="0,147,0,0"/>
         <StackPanel DockPanel.Dock="Left" Margin="0,0,0,-142" Width="811">
             <Grid Margin="0,0,0,-147" Width="798">
-                <Grid.ColumnDefinitions>
+                <!--<Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0*"/>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="655*"/>
                     <ColumnDefinition Width="114*"/>
-                </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>-->
 
                 <ListView Name="lvRecords" Margin="0,100,10,0" Grid.ColumnSpan="5" HorizontalAlignment="Right" Width="778" Height="560" SelectionMode="Multiple" VerticalAlignment="Top"  >
                     <ListView.View>
