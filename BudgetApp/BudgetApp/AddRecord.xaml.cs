@@ -90,8 +90,8 @@ namespace BudgetApp
             int tagid = db.AddTags(Tags);
             int recId = db.AddRecord(r);
             db.AddInterTeg(tagid, recId);
-           
 
+           
 
 
             //db.AddAmount(Amount);
