@@ -63,3 +63,9 @@ and finish up CRUD functionality.
 1.create new interface for workin with tags, couldn't add multiple tags in Main list
 2.finish working with tags
 3.ask about the ways about multiple selection in 1 sell in mssql
+
+
+12/10/2017 Giorgio Plescia,
+1. Completed Scanning Option, Added Currency Exchange rate API on main window, Added sorting code for listview.
+2. Fix up all the arguments and exceptions, add try catches in certain areas, fix Record classes data types.
+3. Need more help about the calendar, and canvas.

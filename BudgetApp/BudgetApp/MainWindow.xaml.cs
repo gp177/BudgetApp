@@ -179,10 +179,10 @@ namespace BudgetApp
             image.SaveFile(fileName);
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> be5f43660988f3f54afc2903d8fbe0030b80c61e
+
+
+
         }
 
 
@@ -241,10 +241,10 @@ namespace BudgetApp
                 }
             }
 
-<<<<<<< HEAD
-            //this.Cursor = Cursors.Default;
 
-=======
+            
+
+
         }
 
         public string CurrencyConversion(decimal amount, string fromCurrency, string toCurrency)
@@ -275,10 +275,12 @@ namespace BudgetApp
         {
             CurrencyConversion(new decimal(123.45), "CAD", "USD");
 
-
         }
+
+
         GridViewColumnHeader _lastHeaderClicked = null;
         ListSortDirection _lastDirection = ListSortDirection.Ascending;
+
         void GridViewColumnHeaderClickedHandler(object sender, RoutedEventArgs e)
         {
             GridViewColumnHeader headerClicked = e.OriginalSource as GridViewColumnHeader;
@@ -322,7 +324,7 @@ namespace BudgetApp
             SortDescription sd = new SortDescription(sortBy, direction);
             dataView.SortDescriptions.Add(sd);
             dataView.Refresh();
->>>>>>> be5f43660988f3f54afc2903d8fbe0030b80c61e
+
         }
     }
 }
