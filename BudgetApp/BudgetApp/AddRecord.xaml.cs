@@ -104,7 +104,8 @@ namespace BudgetApp
                 int tegId=db.GetTagIdbyDescription(item);
                 db.AddInterTeg(tegId, recId);
             }
-           
+            var mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
+            mainWin.reloadAccList();
 
 
             //db.AddAmount(Amount);
@@ -125,6 +126,7 @@ namespace BudgetApp
             reloadTagsList();
             tbAddNewTag.Text = "";
             btCreateNewTag.IsEnabled = false;
+        
                      
         }
 

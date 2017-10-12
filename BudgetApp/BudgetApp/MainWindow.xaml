@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="Budget Application" Height="740" Width="1202" WindowStartupLocation="CenterScreen">
+        Title="Budget Application" Height="821" Width="1202" WindowStartupLocation="CenterScreen">
 
     <DockPanel LastChildFill="False">
 
@@ -37,7 +37,7 @@
                         <GridViewColumn Header="Account" DisplayMemberBinding="{Binding Path=AccountStr}"/>
                         <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path=CategoryStr}"/>
                         <GridViewColumn Header="RecType" DisplayMemberBinding="{Binding Path=RecordType}"/>
-                        <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=TegDesctiption}"/>
+                        <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=TagList}"/>
                         <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path=Amount}"/>
                         <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Date}"/>
                     </GridView>

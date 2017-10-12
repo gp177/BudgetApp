@@ -11,7 +11,7 @@ namespace BudgetApp
     class Database
     {
 
-        private String CONN_STRING = @"Server=tcp:redaleks.database.windows.net,1433;Initial Catalog=BudgetAppDB;Persist Security Info=False;User ID=sqladmin;Password=AG1project;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private String CONN_STRING = @"Server=tcp:redaleks.database.windows.net,1433;Initial Catalog=BudgetAppDB;Persist Security Info=False;User ID=sqladmin;Password=AG1project;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         SqlConnection conn;
 
         public Database()
@@ -52,7 +52,10 @@ namespace BudgetApp
                     rec.CategoryStr = (string)reader["CategoryType"];
                     rec.Date = (DateTime)reader["Date"];
                     rec.Amount = Convert.ToDouble(reader["Amount"]);
-                    rec.TegDesctiption = (string)reader["Description"];
+                    //rec.TegDesctiption = (string)reader["Description"];
+                    // Solution 1: do another query to fech all tags for this record, then concatenate comma-separated into a single string
+                    // Solution 2: in the main query do a sub-query to fetch tags, comma-separated
+
                     rec.RecordType = (string)reader["RecordType"];
                     AccList.Add(rec);
 

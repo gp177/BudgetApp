@@ -34,6 +34,7 @@ namespace BudgetApp
 
         public MainWindow()
         {
+            string fileName = @"D:\test\image.jpg";
             //Database connection
             try
             {
@@ -135,7 +136,7 @@ namespace BudgetApp
                     ImageFile image = (ImageFile)scanResult;
                     string fileName = System.IO.Path.GetTempPath() + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss-fffffff") + ".png";
                     SaveImageToPNGFile(image, fileName);
-                    // pictureBoxScannedImage.ImageLocation = fileName;
+                    //pictureBoxScannedImage.ImageLocation(fileName);
 
                 }
             }

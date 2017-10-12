@@ -21,7 +21,7 @@ namespace BudgetApp
         public string RecordType{get;set;}
         public string AccountStr { get; set;}
         public string CategoryStr { get; set;}
-        public string TegDesctiption { get; set; }
+        // public string TegDesctiption { get; set; }
 
         // Accounts table
         public int AccountId { get; set; }
@@ -35,7 +35,10 @@ namespace BudgetApp
         private String _CategoryType;
 
         // Tag table
-        public int TagId { get; set; }
+        // TagList is computed - NOT in the database
+        public String TagList { get; set; }
+
+        // public int TagId { get; set; }
         private String _Descrption;
 
         // InterTag able
