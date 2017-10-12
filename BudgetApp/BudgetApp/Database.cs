@@ -32,7 +32,6 @@ namespace BudgetApp
             insertCommand.Parameters.Add(new SqlParameter("AccountId", r.AccountId));
             insertCommand.Parameters.Add(new SqlParameter("CategoryId", r.CategoryId));
             insertCommand.Parameters.Add(new SqlParameter("RecordType", r.RecordType));
-            //insertCommand.ExecuteNonQuery();
             int addedId = (int)insertCommand.ExecuteScalar();
             return addedId;
         }
@@ -41,6 +40,8 @@ namespace BudgetApp
         {
             List<Record> AccList = new List<Record>();
             SqlCommand selectCommand = new SqlCommand("Select Records.RecordId,Accounts.AccountName,Category.CategoryType,Tag.Description, Records.Date,Records.Amount,Records.RecordType from Records Inner Join Accounts  On Records.AccountId = Accounts.AccountId Inner Join Category On Records.CategoryId = Category.CategoryId Inner Join InterTag On Records.RecordId = InterTag.RecordId Inner Join Tag On InterTag.TagId = Tag.TagId", conn);
+            
+
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -52,8 +53,6 @@ namespace BudgetApp
                     rec.Date = (DateTime)reader["Date"];
                     rec.Amount = Convert.ToDouble(reader["Amount"]);
                     rec.TegDesctiption = (string)reader["Description"];
-                    //rec.AccountId= (int)reader["AccountId"];
-                    //rec.CategoryId= (int)reader["CategoryId"];
                     rec.RecordType = (string)reader["RecordType"];
                     AccList.Add(rec);
 
@@ -109,16 +108,52 @@ namespace BudgetApp
             }
             return CatList;
         }
-
-        public int AddTags(String Description)
+        //Tag Table
+        public void AddTags(String Description)
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) OUTPUT INSERTED.TagId VALUES (@Description)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Description", Description));
-            //insertCommand.ExecuteNonQuery();
-            int addedId = (int)insertCommand.ExecuteScalar();
-            return addedId;
+            insertCommand.BeginExecuteNonQuery();
+            //int addedId = (int)insertCommand.ExecuteScalar();
+            //return addedId;
 
         }
+        public int GetTagIdbyDescription(String description)
+        {
+            int tagId=0;
+            SqlCommand selectCommand = new SqlCommand("SELECT TagId FROM Tag WHERE Description=@Description", conn);
+            selectCommand.Parameters.Add(new SqlParameter("Description",description));
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    tagId =(int) reader[0];
+
+                }
+            }
+            return tagId;
+        }
+        public List<String> GetTegs()
+        {
+            List<String> TagList = new List<String>();
+            SqlCommand selectCommand = new SqlCommand("SELECT Description FROM Tag", conn);
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    String tag = (String)reader["Description"];
+
+                    TagList.Add(tag);
+
+                }
+            }
+            return TagList;
+        }
+
+
+
+
+        //end
         //InterTag table
         public void AddInterTeg(int TagId, int RecordId)
         {
@@ -159,8 +194,8 @@ namespace BudgetApp
             insertCommand.Parameters.Add(new SqlParameter("Name", AccountName));
             insertCommand.ExecuteNonQuery();
         }
-        //get Account ID for inserting in Record
-        public int  GetAccountID(String AccName)
+        //Account Table
+          public int  GetAccountID(String AccName)
         {
             int id=0;
             SqlCommand selectCommand = new SqlCommand("SELECT AccountID FROM Accounts Where AccountName=@AccountName", conn);
@@ -193,7 +228,9 @@ namespace BudgetApp
         //}
         //end 
 
-        //get Account ID for inserting in Record
+
+        //Category
+        //get Category ID for inserting in Record
         public int GetCategoryID(String CatType)
         {
             int id=0;
@@ -211,12 +248,6 @@ namespace BudgetApp
             return id;
         }
         //end 
-
-
-
-
-
-
         public List<Record> GetAccounts()
         {
             List<Record> AccList = new List<Record>();

@@ -174,8 +174,7 @@ namespace BudgetApp
             image = imgProcess.Apply(image);
             image.SaveFile(fileName);
 
-<<<<<<< HEAD
-=======
+
         }
 
         // Get a web response.
@@ -245,7 +244,7 @@ namespace BudgetApp
             }
 
             //this.Cursor = Cursors.Default;
->>>>>>> eca875535aedae72f7ca9dd9054f5c971aa94117
+
         }
     }
 }

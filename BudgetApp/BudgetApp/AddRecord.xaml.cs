@@ -26,6 +26,7 @@ namespace BudgetApp
             InitializeComponent();
             reloadCategoryList();
             reloadAccountList();
+            reloadTagsList();
         }
 
         private void reloadCategoryList()
@@ -48,8 +49,17 @@ namespace BudgetApp
                 cbAccount.Items.Add(rec.AccountName);
             }
         }
+        private void reloadTagsList()
+        {
+            List<String> list = db.GetTegs();
+            lbTagList.Items.Clear();
+            foreach (String rec in list)
+            {
+                lbTagList.Items.Add(rec);
+            }
+        }
 
-        
+
 
         private void btAddAccount_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +86,7 @@ namespace BudgetApp
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
             String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
-            String Tags = tbTags.Text;
+           
             int AccId = db.GetAccountID(Account);
             int CatId = db.GetCategoryID(Category);
             int Amount = int.Parse(tbBalance.Text);
@@ -87,16 +97,46 @@ namespace BudgetApp
             r.AccountId = AccId;
             r.CategoryId = CatId;
             r.RecordType = RecType;
-            int tagid = db.AddTags(Tags);
             int recId = db.AddRecord(r);
-            db.AddInterTeg(tagid, recId);
-
+            //db.AddInterTeg(tagid, recId);
+            foreach(String item in lbAddTagList.Items)
+            {
+                int tegId=db.GetTagIdbyDescription(item);
+                db.AddInterTeg(tegId, recId);
+            }
            
 
 
             //db.AddAmount(Amount);
             //db.AddDate(Date);
 
+        }
+
+        private void tbAddNewTeg_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btCreateNewTag.IsEnabled = true;
+        }
+
+        private void btCreateNewTag_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: check for double ,focus on added element on a list
+            String tag = tbAddNewTag.Text;
+            db.AddTags(tag);
+            reloadTagsList();
+            tbAddNewTag.Text = "";
+            btCreateNewTag.IsEnabled = false;
+                     
+        }
+
+        private void btAddTegToList_Click(object sender, RoutedEventArgs e)
+        {
+            String item = (String)lbTagList.SelectedItem;
+            if (lbAddTagList.Items.IsEmpty)
+                lbAddTagList.Items.Add(item);
+            else if (lbAddTagList.Items.IndexOf(item) < 0)
+                lbAddTagList.Items.Add(item);
+            else
+                return;
         }
     }
 }
