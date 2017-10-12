@@ -56,7 +56,7 @@
         </Grid>
 
         <!--</StackPanel>-->
-        <GridSplitter Height="742" VerticalAlignment="Top" Width="11" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-146">
+        <GridSplitter Height="664" VerticalAlignment="Top" Width="7" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-147">
             <GridSplitter.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -68,24 +68,25 @@
         </GridSplitter>
         <StackPanel Margin="0,0,0,-147" DockPanel.Dock="Right" Width="373" Height="664" VerticalAlignment="Top">
             <Canvas Height="290" VerticalAlignment="Bottom" Width="365" Margin="8,0,0,332" HorizontalAlignment="Left">
-                <TextBox x:Name="txtSymbol1" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="34" Width="120"/>
-                <TextBox x:Name="txtSymbol2" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="78" Width="120"/>
-                <TextBox x:Name="txtSymbol3" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="120" Width="120"/>
-                <TextBox x:Name="txtSymbol4" Height="24" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="159" Width="120"/>
-                <TextBox x:Name="txtPrice1" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="34" Width="120" IsReadOnly="True"/>
-                <TextBox x:Name="txtPrice2" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="78" Width="120" IsReadOnly="True"/>
-                <TextBox x:Name="txtPrice3" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="121" Width="120" IsReadOnly="True"/>
-                <TextBox x:Name="txtPrice4" Height="23" Canvas.Left="217" TextWrapping="Wrap" Canvas.Top="160" Width="120" IsReadOnly="True"/>
+                <TextBox x:Name="txtSymbol1" Height="24" Canvas.Left="114" TextWrapping="Wrap" Canvas.Top="41" Width="120"/>
+                <TextBox x:Name="txtSymbol2" Height="24" Canvas.Left="114" TextWrapping="Wrap" Canvas.Top="80" Width="120"/>
+                <TextBox x:Name="txtSymbol3" Height="24" Canvas.Left="114" TextWrapping="Wrap" Canvas.Top="120" Width="120"/>
+                <TextBox x:Name="txtSymbol4" Height="24" Canvas.Left="114" TextWrapping="Wrap" Canvas.Top="161" Width="120"/>
                 <Button x:Name="btnGetPrices" Content="Get prices" Canvas.Left="139" Canvas.Top="214" Width="74" Click="btnGetPrices_Click"/>
+                <Label Content="Stocks" Canvas.Left="152" Canvas.Top="10"/>
+                <Label x:Name="lbStock1" Content="$$" Canvas.Left="248" Canvas.Top="40" Width="107"/>
+                <Label x:Name="lbStock2" Content="$$" Canvas.Left="248" Canvas.Top="80" Width="107"/>
+                <Label x:Name="lbStock3" Content="$$" Canvas.Left="248" Canvas.Top="120" Width="107"/>
+                <Label x:Name="lbStock4" Content="$$" Canvas.Left="247" Canvas.Top="159" Width="107"/>
             </Canvas>
             <Canvas Height="100" VerticalAlignment="Bottom" HorizontalAlignment="left"/>
 
 
         </StackPanel>
         <Canvas Width="367" Margin="0,299,0,-142">
-            <TextBox x:Name="tbCurrency1" Height="23" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="58" Width="120"/>
-            <TextBox x:Name="tbCurrency2" Height="23" Canvas.Left="196" TextWrapping="Wrap" Canvas.Top="58" Width="120"/>
-            <TextBox x:Name="tbResult" Height="23" Canvas.Left="115" TextWrapping="Wrap" Canvas.Top="111" Width="120"/>
+            <TextBox x:Name="tbCurrency1" Height="23" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="58" Width="120" Text="USD"/>
+            <TextBox x:Name="tbCurrency2" Height="23" Canvas.Left="196" TextWrapping="Wrap" Canvas.Top="58" Width="120" Text="CAD"/>
+            <TextBox x:Name="tbResult" Height="23" Canvas.Left="115" TextWrapping="Wrap" Canvas.Top="111" Width="120" Text="100" SpellCheck.IsEnabled="True"/>
             <Button x:Name="btCurrency" Content="Convert" Canvas.Left="137" Canvas.Top="149" Width="75" Click="btCurrency_Click"/>
             <Label Content="Currencies" Canvas.Left="139" Canvas.Top="27" Width="75"/>
             <Label Content="Amount" Canvas.Left="149" Canvas.Top="80" Width="63"/>

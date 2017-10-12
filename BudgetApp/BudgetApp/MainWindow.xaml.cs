@@ -178,35 +178,26 @@ namespace BudgetApp
 
         }
 
-        // Get a web response.
+       
         private string GetWebResponse(string url)
         {
-            // Make a WebClient.
+            
             WebClient web_client = new WebClient();
-
-            // Get the indicated URL.
             Stream response = web_client.OpenRead(url);
-
-            // Read the result.
+         
             using (StreamReader stream_reader = new StreamReader(response))
             {
-                // Get the results.
+               
                 string result = stream_reader.ReadToEnd();
-
-                // Close the stream reader and its underlying stream.
                 stream_reader.Close();
-
-                // Return the result.
+     
                 return result;
             }
         }
 
         private void btnGetPrices_Click(object sender, RoutedEventArgs e)
         {
-            //this.Cursor = Cursors.WaitCursor;
-            //Application.DoEvents();
-
-            // Build the URL.
+            
             string url = "";
             if (txtSymbol1.Text != "") url += txtSymbol1.Text + "+";
             if (txtSymbol2.Text != "") url += txtSymbol2.Text + "+";
@@ -214,29 +205,28 @@ namespace BudgetApp
             if (txtSymbol4.Text != "") url += txtSymbol4.Text + "+";
             if (url != "")
             {
-                // Remove the trailing plus sign.
+              
                 url = url.Substring(0, url.Length - 1);
 
-                // Prepend the base URL.
+                
                 const string base_url =
                     "http://download.finance.yahoo.com/d/quotes.csv?s=@&f=sl1d1t1c1";
                 url = base_url.Replace("@", url);
 
-                // Get the response.
+               
                 try
                 {
-                    // Get the web response.
+                    
                     string result = GetWebResponse(url);
                     Console.WriteLine(result.Replace("\\r\\n", "\r\n"));
 
-                    // Pull out the current prices.
                     string[] lines = result.Split(
                         new char[] { '\r', '\n' },
                         StringSplitOptions.RemoveEmptyEntries);
-                    txtPrice1.Text = decimal.Parse(lines[0].Split(',')[1]).ToString("C3");
-                    txtPrice2.Text = decimal.Parse(lines[1].Split(',')[1]).ToString("C3");
-                    txtPrice3.Text = decimal.Parse(lines[2].Split(',')[1]).ToString("C3");
-                    txtPrice4.Text = decimal.Parse(lines[3].Split(',')[1]).ToString("C3");
+                    lbStock1.Content = decimal.Parse(lines[0].Split(',')[1]).ToString("C3");
+                    lbStock2.Content = decimal.Parse(lines[1].Split(',')[1]).ToString("C3");
+                    lbStock3.Content = decimal.Parse(lines[2].Split(',')[1]).ToString("C3");
+                    lbStock4.Content = decimal.Parse(lines[3].Split(',')[1]).ToString("C3");
                 }
                 catch (Exception ex)
                 {
@@ -253,23 +243,20 @@ namespace BudgetApp
             string toCurrency1 = tbCurrency2.Text; 
             decimal amount1 = Convert.ToDecimal(tbResult.Text); 
 
-            // For other currency symbols see http://finance.yahoo.com/currency-converter/
-            // Construct URL to query the Yahoo! Finance API
 
             const string urlPattern = "http://finance.yahoo.com/d/quotes.csv?s={0}{1}=X&f=l1";
             string url = string.Format(urlPattern, fromCurrency1, toCurrency1);
 
-            // Get response as string
             string response = new WebClient().DownloadString(url);
 
-            // Convert string to number
+     
             decimal exchangeRate = decimal.Parse(response, System.Globalization.CultureInfo.InvariantCulture);
 
-            // Output the result
             Output = (amount1 * exchangeRate).ToString();
-            //textBox2.Text = Output;
+
             lbResult.Content = Output;
-            
+
+             
             return Output;
         }
 
