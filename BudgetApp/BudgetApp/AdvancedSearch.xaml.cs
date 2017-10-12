@@ -49,5 +49,10 @@ namespace BudgetApp
 
             }
         }
+
+        private void btSearch_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }

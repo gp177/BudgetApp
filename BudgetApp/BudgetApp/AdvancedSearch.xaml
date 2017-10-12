@@ -17,7 +17,7 @@
         <Label Content="From:" HorizontalAlignment="Left" Margin="158,14,0,0" VerticalAlignment="Top"/>
         <DatePicker HorizontalAlignment="Left" Margin="197,48,0,0" VerticalAlignment="Top"/>
         <Label Content="To:" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btSearch" Content="Search" HorizontalAlignment="Left" Margin="169,147,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button x:Name="btSearch" Content="Search" HorizontalAlignment="Left" Margin="169,147,0,0" VerticalAlignment="Top" Width="130" Click="btSearch_Click"/>
 
     </Grid>
 </Window>

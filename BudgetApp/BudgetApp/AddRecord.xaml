@@ -25,7 +25,7 @@
         <ListBox Name="lbAddTagList" HorizontalAlignment="Left" Height="179" Margin="396,35,0,0" VerticalAlignment="Top" Width="135"/>
         <Button Name="btAddTegToList" Content="=>" HorizontalAlignment="Left" Margin="326,77,0,0" VerticalAlignment="Top" Width="65" Click="btAddTegToList_Click"/>
         <Label Content="New Tag:" HorizontalAlignment="Left" Margin="190,4,0,0" VerticalAlignment="Top"/>
-        <Button Name="btCancelAdd" Content="Cancel" HorizontalAlignment="Left" Margin="276,268,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button Name="btCancelAdd" Content="Cancel" HorizontalAlignment="Left" Margin="276,268,0,0" VerticalAlignment="Top" Width="149" Click="btCancelAdd_Click"/>
         <TextBox Name="tbAddNewTag" HorizontalAlignment="Left" Height="23" Margin="248,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" TextChanged="tbAddNewTeg_TextChanged"/>
         <Button Name="btCreateNewTag" Content="Create tag" HorizontalAlignment="Left" Margin="417,8,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btCreateNewTag_Click"/>
 

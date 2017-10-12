@@ -20,6 +20,7 @@ using WIA;
 using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Microsoft.Win32;
 
 namespace BudgetApp
 {
@@ -79,9 +80,18 @@ namespace BudgetApp
             advSearch.Show();
         }
 
-        private void miExit_Click(object sender, RoutedEventArgs e)
+        private void miExit_Click(object sender, RoutedEventArgs  e)
         {
-            Environment.Exit(0);
+            MessageBoxResult dr = MessageBox.Show("Are you sure you want to quit?","Exit", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            
+            if (dr == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                return;
+            }
         }
 
 
@@ -124,21 +134,27 @@ namespace BudgetApp
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            CommonDialogClass commonDialogClass = new CommonDialogClass();
-            Device scannerDevice = commonDialogClass.ShowSelectDevice(WiaDeviceType.ScannerDeviceType, false, false);
-            if (scannerDevice != null)
+            try
             {
-                Item scannnerItem = scannerDevice.Items[1];
-                AdjustScannerSettings(scannnerItem, 300, 0, 0, 1010, 620, 0, 0);
-                object scanResult = commonDialogClass.ShowTransfer(scannnerItem, WIA.FormatID.wiaFormatPNG, false);
-                if (scanResult != null)
+                CommonDialogClass commonDialogClass = new CommonDialogClass();
+                Device scannerDevice = commonDialogClass.ShowSelectDevice(WiaDeviceType.ScannerDeviceType, false, false);
+                if (scannerDevice != null)
                 {
-                    ImageFile image = (ImageFile)scanResult;
-                    string fileName = System.IO.Path.GetTempPath() + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss-fffffff") + ".png";
-                    SaveImageToPNGFile(image, fileName);
-                    //pictureBoxScannedImage.ImageLocation(fileName);
+                    Item scannnerItem = scannerDevice.Items[1];
+                    AdjustScannerSettings(scannnerItem, 300, 0, 0, 1010, 620, 0, 0);
+                    object scanResult = commonDialogClass.ShowTransfer(scannnerItem, WIA.FormatID.wiaFormatPNG, false);
+                    if (scanResult != null)
+                    {
+                        ImageFile image = (ImageFile)scanResult;
+                        string fileName = System.IO.Path.GetTempPath() + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss-fffffff") + ".png";
+                        SaveImageToPNGFile(image, fileName);
+                        //pictureBoxScannedImage.ImageLocation(fileName);
 
+                    }
                 }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("No Device Found, Please Connect a Scanner.", "Scanner Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -178,11 +194,6 @@ namespace BudgetApp
             SetWIAProperty(imgProcess.Filters[imgProcess.Filters.Count].Properties, "FormatID", WIA.FormatID.wiaFormatPNG);
             image = imgProcess.Apply(image);
             image.SaveFile(fileName);
-
-
-
-
-
 
         }
 
@@ -326,6 +337,30 @@ namespace BudgetApp
             dataView.SortDescriptions.Add(sd);
             dataView.Refresh();
 
+        }
+
+        private void miAbout_Click_1(object sender, RoutedEventArgs e)
+        {  
+            MessageBox.Show("BudgetApp Application" + Environment.NewLine +"Built: October 4, 2017" + Environment.NewLine + 
+           "Version: 1.02" + Environment.NewLine + "Creators: Giorgio Plescia, Oleksii Redko", "About", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void miSaveas_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            if (saveFileDialog.ShowDialog() == true)
+
+            {
+                using (FileStream S = File.Open(saveFileDialog.FileName, FileMode.CreateNew))
+                {
+                    using (StreamWriter st = new StreamWriter(S))
+                    {
+                        foreach (Record aa in lvRecords.Items)
+                            st.WriteLine(string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", aa.AccountId,aa.AccountStr, aa.CategoryStr,aa.RecordType,aa.TagList,aa.Amount,aa.Date));
+                    }
+                }
+            }
         }
     }
 }

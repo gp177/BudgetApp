@@ -140,5 +140,10 @@ namespace BudgetApp
             else
                 return;
         }
+
+        private void btCancelAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

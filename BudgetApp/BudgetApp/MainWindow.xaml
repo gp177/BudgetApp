@@ -11,7 +11,7 @@
 
         <Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top">
             <MenuItem Header="File" Height="25" Width="43" FontSize="18">
-                <MenuItem  x:Name="miSaveas" Header="Save As..." HorizontalAlignment="Left" Height="29" Width="156"/>
+                <MenuItem  x:Name="miSaveas" Header="Save As..." HorizontalAlignment="Left" Height="29" Width="156" Click="miSaveas_Click"/>
                 <MenuItem x:Name="miPrint" Header="Print" HorizontalAlignment="Left" Height="29" Width="156" Click="miPrint_Click" Margin="-1,0,0,0"/>
                 <MenuItem x:Name="miExit" Header="Exit" HorizontalAlignment="Left" Height="29" Width="156" Click="miExit_Click" />
 
@@ -19,7 +19,9 @@
             <MenuItem Header="Tools" Height="25" Width="53" FontSize="18">
                 <MenuItem Header="Scanner" HorizontalAlignment="Left" Height="29" Width="156" Click="MenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="About" Height="25" Width="62" FontSize="18" />
+            <MenuItem Header="Help" Height="25" Width="56" FontSize="18" >
+                <MenuItem x:Name="miAbout" Header="About" HorizontalAlignment="Left" Height="29" Width="156" Click="miAbout_Click_1"/>
+            </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Top" Margin="0,147,0,0"/>
         <!--<StackPanel DockPanel.Dock="Left" Margin="0,0,0,-142" Width="811">-->
