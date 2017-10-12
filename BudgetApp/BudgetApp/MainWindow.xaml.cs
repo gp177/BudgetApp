@@ -18,6 +18,8 @@ using System.Drawing.Printing;
 using System.IO;
 using WIA;
 using System.Net;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BudgetApp
 {
@@ -38,6 +40,8 @@ namespace BudgetApp
                 db = new Database();
                 InitializeComponent();
                 reloadAccList();
+
+                
 
             }
             catch (SqlException ex)
@@ -106,7 +110,7 @@ namespace BudgetApp
 
 
 
-      private void miPrint_Click(object sender, RoutedEventArgs e)
+        private void miPrint_Click(object sender, RoutedEventArgs e)
         {
             PrintDialog printDialog = new PrintDialog();
 
@@ -131,8 +135,8 @@ namespace BudgetApp
                     ImageFile image = (ImageFile)scanResult;
                     string fileName = System.IO.Path.GetTempPath() + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss-fffffff") + ".png";
                     SaveImageToPNGFile(image, fileName);
-                   // pictureBoxScannedImage.ImageLocation = fileName;
-                    
+                    // pictureBoxScannedImage.ImageLocation = fileName;
+
                 }
             }
         }
@@ -178,26 +182,26 @@ namespace BudgetApp
 
         }
 
-       
+
         private string GetWebResponse(string url)
         {
-            
+
             WebClient web_client = new WebClient();
             Stream response = web_client.OpenRead(url);
-         
+
             using (StreamReader stream_reader = new StreamReader(response))
             {
-               
+
                 string result = stream_reader.ReadToEnd();
                 stream_reader.Close();
-     
+
                 return result;
             }
         }
 
         private void btnGetPrices_Click(object sender, RoutedEventArgs e)
         {
-            
+
             string url = "";
             if (txtSymbol1.Text != "") url += txtSymbol1.Text + "+";
             if (txtSymbol2.Text != "") url += txtSymbol2.Text + "+";
@@ -205,18 +209,18 @@ namespace BudgetApp
             if (txtSymbol4.Text != "") url += txtSymbol4.Text + "+";
             if (url != "")
             {
-              
+
                 url = url.Substring(0, url.Length - 1);
 
-                
+
                 const string base_url =
                     "http://download.finance.yahoo.com/d/quotes.csv?s=@&f=sl1d1t1c1";
                 url = base_url.Replace("@", url);
 
-               
+
                 try
                 {
-                    
+
                     string result = GetWebResponse(url);
                     Console.WriteLine(result.Replace("\\r\\n", "\r\n"));
 
@@ -239,9 +243,9 @@ namespace BudgetApp
         public string CurrencyConversion(decimal amount, string fromCurrency, string toCurrency)
         {
             string Output = "";
-            string fromCurrency1 = tbCurrency1.Text; 
-            string toCurrency1 = tbCurrency2.Text; 
-            decimal amount1 = Convert.ToDecimal(tbResult.Text); 
+            string fromCurrency1 = tbCurrency1.Text;
+            string toCurrency1 = tbCurrency2.Text;
+            decimal amount1 = Convert.ToDecimal(tbResult.Text);
 
 
             const string urlPattern = "http://finance.yahoo.com/d/quotes.csv?s={0}{1}=X&f=l1";
@@ -249,22 +253,68 @@ namespace BudgetApp
 
             string response = new WebClient().DownloadString(url);
 
-     
+
             decimal exchangeRate = decimal.Parse(response, System.Globalization.CultureInfo.InvariantCulture);
 
             Output = (amount1 * exchangeRate).ToString();
 
             lbResult.Content = Output;
 
-             
+
             return Output;
         }
 
         private void btCurrency_Click(object sender, RoutedEventArgs e)
         {
-              CurrencyConversion(new decimal(123.45), "CAD", "USD");
-            
-            
+            CurrencyConversion(new decimal(123.45), "CAD", "USD");
+
+
+        }
+        GridViewColumnHeader _lastHeaderClicked = null;
+        ListSortDirection _lastDirection = ListSortDirection.Ascending;
+        void GridViewColumnHeaderClickedHandler(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader headerClicked = e.OriginalSource as GridViewColumnHeader;
+            ListSortDirection direction;
+
+            if (headerClicked != null)
+            {
+                if (headerClicked.Role != GridViewColumnHeaderRole.Padding)
+                {
+                    if (headerClicked != _lastHeaderClicked)
+                    {
+                        direction = ListSortDirection.Ascending;
+                    }
+                    else
+                    {
+                        if (_lastDirection == ListSortDirection.Ascending)
+                        {
+                            direction = ListSortDirection.Descending;
+                        }
+                        else
+                        {
+                            direction = ListSortDirection.Ascending;
+                        }
+                    }
+
+                    string header = headerClicked.Column.Header as string;
+                    Sort(header, direction);
+
+                    _lastHeaderClicked = headerClicked;
+                    _lastDirection = direction;
+                }
+            }
+        }
+
+        private void Sort(string sortBy, ListSortDirection direction)
+        {
+            ICollectionView dataView =
+              CollectionViewSource.GetDefaultView(lvRecords.Items);
+
+            dataView.SortDescriptions.Clear();
+            SortDescription sd = new SortDescription(sortBy, direction);
+            dataView.SortDescriptions.Add(sd);
+            dataView.Refresh();
         }
     }
 }

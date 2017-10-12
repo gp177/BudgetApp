@@ -30,7 +30,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <ListView Name="lvRecords" Margin="0,100,10,0" HorizontalAlignment="Right" Width="778" Height="560" SelectionMode="Multiple" VerticalAlignment="Top" Grid.ColumnSpan="2"  >
+            <ListView Name="lvRecords" Margin="0,100,10,0" HorizontalAlignment="Right" Width="778" Height="560" SelectionMode="Multiple" VerticalAlignment="Top" Grid.ColumnSpan="2"  GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding Path=RecordId}"/>
