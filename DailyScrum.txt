@@ -74,3 +74,9 @@ and finish up CRUD functionality.
 1.Finished tags adding,couldn't do checking for uniqueness
 2.filtering, bug fixes, checking inputs, tools ,saving documents in blob
 3.ask teacher about unique fields in DB , how to save documents in BLOB 
+
+
+13/10/2017 Giorgio Plescia,
+1. Completed saving data from views, added exception for Scanner, fixed exit button.
+2. Add generation for graphs of projected amounts, fix more UI issues.
+3. get help regarding movement of items on interface.
