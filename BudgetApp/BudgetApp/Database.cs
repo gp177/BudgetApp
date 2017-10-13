@@ -57,9 +57,6 @@ namespace BudgetApp
                     rec.Date = (DateTime)reader["Date"];
                     rec.Amount = Convert.ToDouble(reader["Amount"]);
                     rec.TagDesctiption =  String.Join(",", GetTagsbyId(rec.RecordId));
-                    // Solution 1: do another query to fech all tags for this record, then concatenate comma-separated into a single string
-                    // Solution 2: in the main query do a sub-query to fetch tags, comma-separated
-
                     rec.RecordType = (string)reader["RecordType"];
                     AccList.Add(rec);
 
@@ -120,7 +117,8 @@ namespace BudgetApp
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) OUTPUT INSERTED.TagId VALUES (@Description)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Description", Description));
-            insertCommand.BeginExecuteNonQuery();
+            //int addedId = insertCommand.BeginExecuteNonQuery();            
+            insertCommand.ExecuteNonQuery();
             //int addedId = (int)insertCommand.ExecuteScalar();
             //return addedId;
 
