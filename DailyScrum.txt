@@ -69,3 +69,8 @@ and finish up CRUD functionality.
 1. Completed Scanning Option, Added Currency Exchange rate API on main window, Added sorting code for listview.
 2. Fix up all the arguments and exceptions, add try catches in certain areas, fix Record classes data types.
 3. Need more help about the calendar, and canvas.
+
+12.10.2017 Oleksii Redko
+1.Finished tags adding,couldn't do checking for uniqueness
+2.filtering, bug fixes, checking inputs, tools ,saving documents in blob
+3.ask teacher about unique fields in DB , how to save documents in BLOB 

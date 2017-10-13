@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace BudgetApp
         }
         private void reloadTagsList()
         {
-            List<String> list = db.GetTegs();
+            List<String> list = db.GetTags();
             lbTagList.Items.Clear();
             foreach (String rec in list)
             {
@@ -98,7 +99,6 @@ namespace BudgetApp
             r.CategoryId = CatId;
             r.RecordType = RecType;
             int recId = db.AddRecord(r);
-            //db.AddInterTeg(tagid, recId);
             foreach(String item in lbAddTagList.Items)
             {
                 int tegId=db.GetTagIdbyDescription(item);
@@ -107,9 +107,6 @@ namespace BudgetApp
             var mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
             mainWin.reloadAccList();
 
-
-            //db.AddAmount(Amount);
-            //db.AddDate(Date);
 
         }
 
@@ -121,13 +118,13 @@ namespace BudgetApp
         private void btCreateNewTag_Click(object sender, RoutedEventArgs e)
         {
             //TODO: check for double ,focus on added element on a list
-            String tag = tbAddNewTag.Text;
-            db.AddTags(tag);
-            reloadTagsList();
-            tbAddNewTag.Text = "";
-            btCreateNewTag.IsEnabled = false;
-        
-                     
+          
+                String tag = tbAddNewTag.Text;
+                db.AddTags(tag);
+                reloadTagsList();
+                tbAddNewTag.Text = String.Empty;
+                btCreateNewTag.IsEnabled = false;
+                  
         }
 
         private void btAddTegToList_Click(object sender, RoutedEventArgs e)
@@ -141,7 +138,9 @@ namespace BudgetApp
                 return;
         }
 
-        private void btCancelAdd_Click(object sender, RoutedEventArgs e)
+       
+
+        private void btCloselAdd_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

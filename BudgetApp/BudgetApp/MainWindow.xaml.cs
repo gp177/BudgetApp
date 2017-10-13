@@ -43,7 +43,9 @@ namespace BudgetApp
                 InitializeComponent();
                 reloadAccList();
 
-                
+
+
+
 
             }
             catch (SqlException ex)
@@ -80,10 +82,10 @@ namespace BudgetApp
             advSearch.Show();
         }
 
-        private void miExit_Click(object sender, RoutedEventArgs  e)
+        private void miExit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dr = MessageBox.Show("Are you sure you want to quit?","Exit", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            
+            MessageBoxResult dr = MessageBox.Show("Are you sure you want to quit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
             if (dr == MessageBoxResult.Yes)
             {
                 Environment.Exit(0);
@@ -152,7 +154,8 @@ namespace BudgetApp
 
                     }
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("No Device Found, Please Connect a Scanner.", "Scanner Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -254,7 +257,7 @@ namespace BudgetApp
             }
 
 
-            
+
 
 
         }
@@ -340,8 +343,8 @@ namespace BudgetApp
         }
 
         private void miAbout_Click_1(object sender, RoutedEventArgs e)
-        {  
-            MessageBox.Show("BudgetApp Application" + Environment.NewLine +"Built: October 4, 2017" + Environment.NewLine + 
+        {
+            MessageBox.Show("BudgetApp Application" + Environment.NewLine + "Built: October 4, 2017" + Environment.NewLine +
            "Version: 1.02" + Environment.NewLine + "Creators: Giorgio Plescia, Oleksii Redko", "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -357,7 +360,7 @@ namespace BudgetApp
                     using (StreamWriter st = new StreamWriter(S))
                     {
                         foreach (Record aa in lvRecords.Items)
-                            st.WriteLine(string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", aa.AccountId,aa.AccountStr, aa.CategoryStr,aa.RecordType,aa.TagList,aa.Amount,aa.Date));
+                            st.WriteLine(string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", aa.AccountId, aa.AccountStr, aa.CategoryStr, aa.RecordType, aa.TagList, aa.Amount, aa.Date));
                     }
                 }
             }

@@ -39,7 +39,7 @@
                         <GridViewColumn Header="Account" DisplayMemberBinding="{Binding Path=AccountStr}"/>
                         <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Path=CategoryStr}"/>
                         <GridViewColumn Header="RecType" DisplayMemberBinding="{Binding Path=RecordType}"/>
-                        <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=TagList}"/>
+                        <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Path=TagDesctiption}"/>
                         <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Path=Amount}"/>
                         <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Date}"/>
                     </GridView>

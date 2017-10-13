@@ -39,9 +39,13 @@ namespace BudgetApp
         public List<Record> GetRecord()
         {
             List<Record> AccList = new List<Record>();
-            SqlCommand selectCommand = new SqlCommand("Select Records.RecordId,Accounts.AccountName,Category.CategoryType,Tag.Description, Records.Date,Records.Amount,Records.RecordType from Records Inner Join Accounts  On Records.AccountId = Accounts.AccountId Inner Join Category On Records.CategoryId = Category.CategoryId Inner Join InterTag On Records.RecordId = InterTag.RecordId Inner Join Tag On InterTag.TagId = Tag.TagId", conn);
-            
-
+            SqlCommand selectCommand = new SqlCommand(@"Select Records.RecordId,Accounts.AccountName,Category.CategoryType, Records.Date,Records.Amount,Records.RecordType 
+                                                        from Records
+                                                        Inner Join Accounts
+                                                        On Records.AccountId = Accounts.AccountId
+                                                        Inner Join Category
+                                                        On Records.CategoryId = Category.CategoryId ", conn);
+         
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -52,7 +56,7 @@ namespace BudgetApp
                     rec.CategoryStr = (string)reader["CategoryType"];
                     rec.Date = (DateTime)reader["Date"];
                     rec.Amount = Convert.ToDouble(reader["Amount"]);
-                    //rec.TegDesctiption = (string)reader["Description"];
+                    rec.TagDesctiption =  String.Join(",", GetTagsbyId(rec.RecordId));
                     // Solution 1: do another query to fech all tags for this record, then concatenate comma-separated into a single string
                     // Solution 2: in the main query do a sub-query to fetch tags, comma-separated
 
@@ -136,7 +140,7 @@ namespace BudgetApp
             }
             return tagId;
         }
-        public List<String> GetTegs()
+        public List<String> GetTags()
         {
             List<String> TagList = new List<String>();
             SqlCommand selectCommand = new SqlCommand("SELECT Description FROM Tag", conn);
@@ -153,7 +157,27 @@ namespace BudgetApp
             return TagList;
         }
 
+        public List<String> GetTagsbyId(int id)
+        {
+            List<String> list = new List<String>();
+            SqlCommand selectCommand = new SqlCommand(@"Select Tag.Description
+                                                        from tag
+                                                        inner join InterTag
+                                                        on InterTag.TagId = Tag.TagId
+                                                        where InterTag.RecordId = @RecordId", conn);
+            selectCommand.Parameters.Add(new SqlParameter("RecordId",id));
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    String tag = (String)reader["Description"];
 
+                    list.Add(tag);
+
+                }
+            }
+            return list;
+        }
 
 
         //end
