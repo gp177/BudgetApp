@@ -20,8 +20,7 @@ namespace BudgetApp
         public Scanners()
         {
             InitializeComponent();
-            dlg = new CommonDialogClass();
-            oDevice = dlg.ShowSelectDevice(WiaDeviceType.ScannerDeviceType, true, false);
+           
         }
         public void Scann()
         {
@@ -30,10 +29,11 @@ namespace BudgetApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dlg = new CommonDialogClass();
+            oDevice = dlg.ShowSelectDevice(WiaDeviceType.ScannerDeviceType, true, false);
             try
             {
-                Scanners oScanner = new Scanners();
-                oScanner.Scann();
+                Scann();
                 button1.Text = "Image scanned";
                 OpenFileDialog dlg = new OpenFileDialog();
                 if (dlg.ShowDialog() == DialogResult.OK)

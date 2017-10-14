@@ -136,9 +136,10 @@ namespace BudgetApp
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+
             Scanners scn = new Scanners();
             scn.Show();
-          
+
         }
 
 
