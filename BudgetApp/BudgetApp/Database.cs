@@ -123,6 +123,16 @@ namespace BudgetApp
             //return addedId;
 
         }
+
+        public void AddPictures(Byte[] p)
+        {
+            SqlCommand insertCOmmand = new SqlCommand("INSERT INTO Records (Document) VALUES (@Document)", conn);
+            insertCOmmand.Parameters.Add(new SqlParameter("Document", p));
+            insertCOmmand.ExecuteNonQuery();
+
+        }
+
+
         public int GetTagIdbyDescription(String description)
         {
             int tagId=0;

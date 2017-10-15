@@ -143,9 +143,6 @@ namespace BudgetApp
         }
 
 
-        
-
-
         private string GetWebResponse(string url)
         {
 
