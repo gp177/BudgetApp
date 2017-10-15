@@ -70,10 +70,10 @@ namespace BudgetApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+
             AddRecord rec = new AddRecord();
             rec.ShowDialog();
-            
+
 
         }
 
@@ -311,19 +311,20 @@ namespace BudgetApp
 
         private void btEditRecord_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (lvRecords.SelectedItems.Count > 1|| lvRecords.SelectedItems.Count ==0)
+
+            if (lvRecords.SelectedItems.Count > 1 || lvRecords.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Can't edit more then one record \n You selected : "+ lvRecords.SelectedItems.Count, " Selection error", MessageBoxButton.OK, MessageBoxImage.Information );   
-            }else
+                MessageBox.Show("Can't edit more then one record \n You selected : " + lvRecords.SelectedItems.Count, " Selection error", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
             {
                 AddRecord editR = new AddRecord();
 
-               
+
                 editR.Title = "Edit record";
                 editR.btAddRecord.Visibility = Visibility.Hidden;
                 editR.btSaveTag.Visibility = Visibility.Visible;
-             
+
                 Record item = new Record();
                 item = (Record)lvRecords.SelectedItem;
                 editR.tbRecordId.Text = Convert.ToString(item.RecordId);
@@ -331,19 +332,80 @@ namespace BudgetApp
                 editR.cbCategory.SelectedItem = item.CategoryStr;
 
                 if (item.RecordType.Equals("Spending"))
-                    editR.rbSpending.IsChecked = true; 
+                    editR.rbSpending.IsChecked = true;
                 else
                     editR.rbIncome.IsChecked = true;
                 editR.DatePick.SelectedDate = item.Date;
                 editR.tbBalance.Text = Convert.ToString(item.Amount);
                 String[] tagsItems = item.TagDesctiption.Split(',');
-                foreach(string itm in tagsItems)
+                foreach (string itm in tagsItems)
                 {
                     editR.lbTagsView.Items.Add(itm);
                 }
                 editR.ShowDialog();
 
             }
+        }
+
+
+
+
+        public void FilterbyType(String type)
+        {
+            reloadAccList();
+            List<Record> list = new List<Record>();
+            foreach (Record item in lvRecords.Items)
+            {
+                list.Add(item);
+            }
+            var SortList = (from r in list where r.RecordType == type select r).ToList<Record>();
+            lvRecords.Items.Clear();
+            foreach (Record r in SortList)
+            {
+                lvRecords.Items.Add(r);
+            }
+        }
+        public void FilterbyDate(DateTime d1, DateTime d2)
+        {
+            reloadAccList();
+            List<Record> list = new List<Record>();
+            foreach (Record item in lvRecords.Items)
+            {
+                list.Add(item);
+            }
+            var SortList = (from r in list where (r.Date>=d1 && r.Date<=d2) select r).ToList<Record>();
+            lvRecords.Items.Clear();
+            foreach (Record r in SortList)
+            {
+                lvRecords.Items.Add(r);
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        {
+            int index = cbTypeFilter.SelectedIndex;
+            if (index == 0)
+                reloadAccList();
+            else if (index == 1)
+                FilterbyType("Spending");
+            else
+                FilterbyType("Income");
+
+        }
+
+        private void dpFrom_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dpTo.SelectedDate = dpFrom.SelectedDate;
+            dpTo.DisplayDateStart = dpFrom.SelectedDate;
+        }
+
+        private void dpTo_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            FilterbyDate((DateTime)dpFrom.SelectedDate, (DateTime)dpTo.SelectedDate);
         }
     }
 

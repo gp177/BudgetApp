@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="AddTags" Height="313.795" Width="377.867">
+        Title="AddTags" Height="317.924" Width="367.958" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="354*"/>
@@ -18,8 +18,8 @@
         <Button x:Name="btAddTegToList" Content="=&gt;" HorizontalAlignment="Left" Margin="143,100,0,0" VerticalAlignment="Top" Width="65" Click="btAddTegToList_Click" Height="20"/>
         <Label Content="New Tag:" HorizontalAlignment="Left" Margin="7,27,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
         <TextBox x:Name="tbAddNewTag" HorizontalAlignment="Left" Height="23" Margin="65,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" TextChanged="tbAddNewTeg_TextChanged"/>
-        <Button x:Name="btCreateNewTag" Content="Create tag" HorizontalAlignment="Left" Margin="3,31,-76,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btCreateNewTag_Click" Grid.Column="2" Height="20"/>
-        <Button Name="btSave" Content="Save" HorizontalAlignment="Left" Margin="96,253,0,0" VerticalAlignment="Top" Width="146" Click="btSave_Click" Height="20"/>
+        <Button x:Name="btCreateNewTag" Content="Create tag" HorizontalAlignment="Left" Margin="235,30,0,0" VerticalAlignment="Top" Width="76" IsEnabled="False" Click="btCreateNewTag_Click" Height="23"/>
+        <Button Name="btSave" Content="Save" HorizontalAlignment="Left" Margin="88,242,0,0" VerticalAlignment="Top" Width="179" Click="btSave_Click" Height="20"/>
 
     </Grid>
 </Window>
