@@ -82,6 +82,9 @@
     <Compile Include="AddRecord.xaml.cs">
       <DependentUpon>AddRecord.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTags.xaml.cs">
+      <DependentUpon>AddTags.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdvancedSearch.xaml.cs">
       <DependentUpon>AdvancedSearch.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddRecord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

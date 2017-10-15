@@ -1,0 +1,25 @@
+﻿<Window x:Class="BudgetApp.AddTags"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetApp"
+        mc:Ignorable="d"
+        Title="AddTags" Height="313.795" Width="377.867">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="354*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Tag(s)" HorizontalAlignment="Left" Margin="159,67,0,0" VerticalAlignment="Top" Height="26" Width="40"/>
+        <ListBox x:Name="lbTagList" HorizontalAlignment="Left" Height="179" Margin="6,58,0,0" VerticalAlignment="Top" Width="132"/>
+        <ListBox x:Name="lbAddTagList" HorizontalAlignment="Left" Height="179" Margin="213,58,0,0" VerticalAlignment="Top" Width="135"/>
+        <Button x:Name="btAddTegToList" Content="=&gt;" HorizontalAlignment="Left" Margin="143,100,0,0" VerticalAlignment="Top" Width="65" Click="btAddTegToList_Click" Height="20"/>
+        <Label Content="New Tag:" HorizontalAlignment="Left" Margin="7,27,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+        <TextBox x:Name="tbAddNewTag" HorizontalAlignment="Left" Height="23" Margin="65,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" TextChanged="tbAddNewTeg_TextChanged"/>
+        <Button x:Name="btCreateNewTag" Content="Create tag" HorizontalAlignment="Left" Margin="3,31,-76,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btCreateNewTag_Click" Grid.Column="2" Height="20"/>
+        <Button Name="btSave" Content="Save" HorizontalAlignment="Left" Margin="96,253,0,0" VerticalAlignment="Top" Width="146" Click="btSave_Click" Height="20"/>
+
+    </Grid>
+</Window>

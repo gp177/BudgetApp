@@ -70,9 +70,10 @@ namespace BudgetApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+          
             AddRecord rec = new AddRecord();
             rec.ShowDialog();
-
+            
 
         }
 
@@ -363,6 +364,43 @@ namespace BudgetApp
                             st.WriteLine(string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}", aa.AccountId, aa.AccountStr, aa.CategoryStr, aa.RecordType, aa.TagList, aa.Amount, aa.Date));
                     }
                 }
+            }
+        }
+
+        private void btEditRecord_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (lvRecords.SelectedItems.Count > 1|| lvRecords.SelectedItems.Count ==0)
+            {
+                MessageBox.Show("Can't edit more then one record \n You selected : "+ lvRecords.SelectedItems.Count, " Selection error", MessageBoxButton.OK, MessageBoxImage.Information );   
+            }else
+            {
+                AddRecord editR = new AddRecord();
+
+               
+                editR.Title = "Edit record";
+                editR.btAddRecord.Visibility = Visibility.Hidden;
+                editR.btSaveTag.Visibility = Visibility.Visible;
+             
+                Record item = new Record();
+                item = (Record)lvRecords.SelectedItem;
+                editR.tbRecordId.Text = Convert.ToString(item.RecordId);
+                editR.cbAccount.SelectedItem = item.AccountStr;
+                editR.cbCategory.SelectedItem = item.CategoryStr;
+
+                if (item.RecordType.Equals("Spending"))
+                    editR.rbSpending.IsChecked = true; 
+                else
+                    editR.rbIncome.IsChecked = true;
+                editR.DatePick.SelectedDate = item.Date;
+                editR.tbBalance.Text = Convert.ToString(item.Amount);
+                String[] tagsItems = item.TagDesctiption.Split(',');
+                foreach(string itm in tagsItems)
+                {
+                    editR.lbTagsView.Items.Add(itm);
+                }
+                editR.ShowDialog();
+
             }
         }
     }

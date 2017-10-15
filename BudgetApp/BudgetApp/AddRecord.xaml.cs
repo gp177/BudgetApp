@@ -27,7 +27,7 @@ namespace BudgetApp
             InitializeComponent();
             reloadCategoryList();
             reloadAccountList();
-            reloadTagsList();
+            //reloadTagsView();
         }
 
         private void reloadCategoryList()
@@ -50,13 +50,13 @@ namespace BudgetApp
                 cbAccount.Items.Add(rec.AccountName);
             }
         }
-        private void reloadTagsList()
+        private void reloadTagsView()
         {
             List<String> list = db.GetTags();
-            lbTagList.Items.Clear();
+            lbTagsView.Items.Clear();
             foreach (String rec in list)
             {
-                lbTagList.Items.Add(rec);
+                lbTagsView.Items.Add(rec);
             }
         }
 
@@ -81,9 +81,9 @@ namespace BudgetApp
 
         private void btAddRecord_Click(object sender, RoutedEventArgs e)
         {
-
+            
             Record r = new Record();
-            // values from user inputs
+            // values from user inputsz
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
             String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
@@ -99,50 +99,60 @@ namespace BudgetApp
             r.CategoryId = CatId;
             r.RecordType = RecType;
             int recId = db.AddRecord(r);
-            foreach(String item in lbAddTagList.Items)
+            foreach (String item in lbTagsView.Items)
             {
-                int tegId=db.GetTagIdbyDescription(item);
+                int tegId = db.GetTagIdbyDescription(item);
                 db.AddInterTeg(tegId, recId);
             }
             var mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
             mainWin.reloadAccList();
 
-
         }
-
-        private void tbAddNewTeg_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            btCreateNewTag.IsEnabled = true;
-        }
-
-        private void btCreateNewTag_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO: check for double ,focus on added element on a list
-          
-                String tag = tbAddNewTag.Text;
-                db.AddTags(tag);
-                reloadTagsList();
-                tbAddNewTag.Text = String.Empty;
-                btCreateNewTag.IsEnabled = false;
-                  
-        }
-
-        private void btAddTegToList_Click(object sender, RoutedEventArgs e)
-        {
-            String item = (String)lbTagList.SelectedItem;
-            if (lbAddTagList.Items.IsEmpty)
-                lbAddTagList.Items.Add(item);
-            else if (lbAddTagList.Items.IndexOf(item) < 0)
-                lbAddTagList.Items.Add(item);
-            else
-                return;
-        }
-
-       
 
         private void btCloselAdd_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btbtAddEditTags_Click(object sender, RoutedEventArgs e)
+        {
+            AddTags t = new AddTags();
+            t.ShowDialog();
+        }
+
+       
+        private void btSaveTag_Click(object sender, RoutedEventArgs e)
+        {
+            Record r = new Record();
+            // values from user inputsz
+            String Account = cbAccount.Text;
+            String Category = cbCategory.Text;
+            String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
+
+            int RecdId = Convert.ToInt32(tbRecordId.Text);
+            int AccId = db.GetAccountID(Account);
+            int CatId = db.GetCategoryID(Category);
+            int Amount = int.Parse(tbBalance.Text);
+            DateTime Date = DateTime.Parse(DatePick.Text);
+
+            r.RecordId = RecdId;
+            r.Date = Date;
+            r.Amount = Amount;
+            r.AccountId = AccId;
+            r.CategoryId = CatId;
+            r.RecordType = RecType;
+            db.UpdateRecord(r);
+            db.deleteInterTag(RecdId);
+            foreach (String item in lbTagsView.Items)
+            {
+                int tegId = db.GetTagIdbyDescription(item);
+                db.AddInterTeg(tegId, RecdId);
+            }
+
+            var mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
+            mainWin.reloadAccList();
+            this.Close();
+
         }
     }
 }
