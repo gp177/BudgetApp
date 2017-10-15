@@ -137,67 +137,9 @@ namespace BudgetApp
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                CommonDialogClass commonDialogClass = new CommonDialogClass();
-                Device scannerDevice = commonDialogClass.ShowSelectDevice(WiaDeviceType.ScannerDeviceType, false, false);
-                if (scannerDevice != null)
-                {
-                    Item scannnerItem = scannerDevice.Items[1];
-                    AdjustScannerSettings(scannnerItem, 300, 0, 0, 1010, 620, 0, 0);
-                    object scanResult = commonDialogClass.ShowTransfer(scannnerItem, WIA.FormatID.wiaFormatPNG, false);
-                    if (scanResult != null)
-                    {
-                        ImageFile image = (ImageFile)scanResult;
-                        string fileName = System.IO.Path.GetTempPath() + DateTime.Now.ToString("dd-MM-yyyy-hh-mm-ss-fffffff") + ".png";
-                        SaveImageToPNGFile(image, fileName);
-                        //pictureBoxScannedImage.ImageLocation(fileName);
 
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No Device Found, Please Connect a Scanner.", "Scanner Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private static void AdjustScannerSettings(IItem scannnerItem, int scanResolutionDPI, int scanStartLeftPixel, int scanStartTopPixel,
-           int scanWidthPixels, int scanHeightPixels, int brightnessPercents, int contrastPercents)
-        {
-            const string WIA_HORIZONTAL_SCAN_RESOLUTION_DPI = "6147";
-            const string WIA_VERTICAL_SCAN_RESOLUTION_DPI = "6148";
-            const string WIA_HORIZONTAL_SCAN_START_PIXEL = "6149";
-            const string WIA_VERTICAL_SCAN_START_PIXEL = "6150";
-            const string WIA_HORIZONTAL_SCAN_SIZE_PIXELS = "6151";
-            const string WIA_VERTICAL_SCAN_SIZE_PIXELS = "6152";
-            const string WIA_SCAN_BRIGHTNESS_PERCENTS = "6154";
-            const string WIA_SCAN_CONTRAST_PERCENTS = "6155";
-            SetWIAProperty(scannnerItem.Properties, WIA_HORIZONTAL_SCAN_RESOLUTION_DPI, scanResolutionDPI);
-            SetWIAProperty(scannnerItem.Properties, WIA_VERTICAL_SCAN_RESOLUTION_DPI, scanResolutionDPI);
-            SetWIAProperty(scannnerItem.Properties, WIA_HORIZONTAL_SCAN_START_PIXEL, scanStartLeftPixel);
-            SetWIAProperty(scannnerItem.Properties, WIA_VERTICAL_SCAN_START_PIXEL, scanStartTopPixel);
-            SetWIAProperty(scannnerItem.Properties, WIA_HORIZONTAL_SCAN_SIZE_PIXELS, scanWidthPixels);
-            SetWIAProperty(scannnerItem.Properties, WIA_VERTICAL_SCAN_SIZE_PIXELS, scanHeightPixels);
-            SetWIAProperty(scannnerItem.Properties, WIA_SCAN_BRIGHTNESS_PERCENTS, brightnessPercents);
-            SetWIAProperty(scannnerItem.Properties, WIA_SCAN_CONTRAST_PERCENTS, contrastPercents);
-        }
-
-        private static void SetWIAProperty(IProperties properties, object propName, object propValue)
-        {
-            Property prop = properties.get_Item(ref propName);
-            prop.set_Value(ref propValue);
-        }
-
-        private static void SaveImageToPNGFile(ImageFile image, string fileName)
-        {
-            ImageProcess imgProcess = new ImageProcess();
-            object convertFilter = "Convert";
-            string convertFilterID = imgProcess.FilterInfos.get_Item(ref convertFilter).FilterID;
-            imgProcess.Filters.Add(convertFilterID, 0);
-            SetWIAProperty(imgProcess.Filters[imgProcess.Filters.Count].Properties, "FormatID", WIA.FormatID.wiaFormatPNG);
-            image = imgProcess.Apply(image);
-            image.SaveFile(fileName);
+            Scanners scn = new Scanners();
+            scn.Show();
 
         }
 
@@ -404,5 +346,7 @@ namespace BudgetApp
             }
         }
     }
+
+   
 }
 
