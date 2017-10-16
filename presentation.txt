@@ -1,0 +1,32 @@
+(Title):
+- BudgetApp
+- Budgeting app
+- Giorgio, Oleksii
+
+(Background)
+-A Personal Budget Application, Keep track of Spending and Incomes
+
+(Solution overview)
+- Welcome ss
+- MainWindow ss
+- Focus on fetching data, charts, list and APIS ss
+- Scanning and printing ss
+
+(CHallenges and solutions)
+-Scanner
+-CHarts
+-Api's
+-SQL many to many implementation
+- Teach store binary data and returning image from database
+
+(Future work)
+- ASP.NET Calendar
+- More charts
+- List advanced search
+- Better xaml UI
+
+(summary)
+- Conclusion
+-  lists, charts, apis, scanners, printers, 
+- Project experience
+- Thank you
