@@ -71,24 +71,25 @@
                 <TextBox x:Name="txtSymbol3" Height="24" Canvas.Left="114" TextWrapping="Wrap" Canvas.Top="120" Width="120"/>
                 <TextBox x:Name="txtSymbol4" Height="24" Canvas.Left="114" TextWrapping="Wrap" Canvas.Top="161" Width="120"/>
                 <Button x:Name="btnGetPrices" Content="Get prices" Canvas.Left="139" Canvas.Top="214" Width="74" Click="btnGetPrices_Click"/>
-              
+
                 <Label x:Name="lbStock1" Content="$$" Canvas.Left="248" Canvas.Top="40" Width="107"/>
                 <Label x:Name="lbStock2" Content="$$" Canvas.Left="248" Canvas.Top="80" Width="107"/>
                 <Label x:Name="lbStock3" Content="$$" Canvas.Left="248" Canvas.Top="120" Width="107"/>
                 <Label x:Name="lbStock4" Content="$$" Canvas.Left="247" Canvas.Top="159" Width="107"/>
-                <Canvas Height="194" Width="370" Canvas.Top="239">
-                    <TextBox x:Name="tbCurrency1" Height="23" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="58" Width="120" Text="USD"/>
-                    <TextBox x:Name="tbCurrency2" Height="23" Canvas.Left="196" TextWrapping="Wrap" Canvas.Top="58" Width="120" Text="CAD"/>
-                    <TextBox x:Name="tbResult" Height="23" Canvas.Left="115" TextWrapping="Wrap" Canvas.Top="111" Width="120" Text="100" SpellCheck.IsEnabled="True"/>
-                    <Button x:Name="btCurrency" Content="Convert" Canvas.Left="137" Canvas.Top="149" Width="75" Click="btCurrency_Click"/>
-                    
-                    <Label Content="Amount" Canvas.Left="149" Canvas.Top="80" Width="63"/>
-                    <Label x:Name="lbResult" Content="" Canvas.Left="139" Canvas.Top="193" Width="73"/>
-                    <GroupBox Header="Currensies" Height="178" Canvas.Left="10" Canvas.Top="10" Width="350"/>
+                <Canvas Height="172" Width="345" Canvas.Top="244" Canvas.Left="10" >
+                    <TextBox x:Name="tbCurrency1" Height="23" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="20" Width="120" Text="USD"/>
+                    <TextBox x:Name="tbCurrency2" Height="23" Canvas.Left="196" TextWrapping="Wrap" Canvas.Top="20" Width="120" Text="CAD"/>
+                    <TextBox x:Name="tbResult" Height="24" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="77" Width="120" Text="100" SpellCheck.IsEnabled="True"/>
+                    <Button x:Name="btCurrency" Content="Convert" Canvas.Left="134" Canvas.Top="120" Width="74" Click="btCurrency_Click" RenderTransformOrigin="0.5,0.075"/>
+
+                    <Label Content="Amount" Canvas.Left="28" Canvas.Top="46" Width="62"/>
+                    <Label x:Name="lbResult" Content="" Canvas.Left="196" Canvas.Top="77" Width="73"/>
+                    <GroupBox Header="Currencies" Height="168" Width="345"/>
+
                 </Canvas>
                 <Wpf:PieChart Name="pcDebitAccouts" Height="253" Canvas.Top="465" Width="344" Canvas.Left="10"/>
                 <GroupBox Header="Stocks" Height="239" Canvas.Left="10" Width="344"/>
-                <GroupBox Header="Debit Summary" Height="321" Canvas.Left="10" Canvas.Top="438" Width="355"/>
+                <GroupBox Header="Debit Summary" Height="321" Canvas.Left="10" Canvas.Top="421" Width="345"/>
             </Canvas>
 
 
