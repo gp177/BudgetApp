@@ -5,29 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="AddRecord" Height="334.859" Width="569.317" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,10,8">
-        <Label Content="Account" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top"/>
-        <Label Content="Category" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Name="btAddAccount" Content="Add" HorizontalAlignment="Left" Margin="145,34,0,0" VerticalAlignment="Top" Width="32" Click="btAddAccount_Click"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="146,92,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click"/>
-        <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="11,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Tag(s)" HorizontalAlignment="Left" Margin="342,44,0,0" VerticalAlignment="Top"/>
-        <Label Content="Amount" HorizontalAlignment="Left" Margin="11,187,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="DatePick" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Date" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btAddRecord" Content="AddRecord" HorizontalAlignment="Left" Margin="109,268,0,0" VerticalAlignment="Top" Width="143" Click="btAddRecord_Click"/>
-        <RadioButton Name="rbSpending"  Content="Spending" HorizontalAlignment="Left" Margin="260,234,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="rbIncome" Content="Income" HorizontalAlignment="Left" Margin="360,234,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="lbTagList" HorizontalAlignment="Left" Height="179" Margin="189,35,0,0" VerticalAlignment="Top" Width="132"/>
-        <ListBox Name="lbAddTagList" HorizontalAlignment="Left" Height="179" Margin="396,35,0,0" VerticalAlignment="Top" Width="135"/>
-        <Button Name="btAddTegToList" Content="=>" HorizontalAlignment="Left" Margin="326,77,0,0" VerticalAlignment="Top" Width="65" Click="btAddTegToList_Click"/>
-        <Label Content="New Tag:" HorizontalAlignment="Left" Margin="190,4,0,0" VerticalAlignment="Top"/>
-        <Button Name="btCloseAdd" Content="Close" HorizontalAlignment="Left" Margin="276,268,0,0" VerticalAlignment="Top" Width="149" Click="btCloselAdd_Click"/>
-        <TextBox Name="tbAddNewTag" HorizontalAlignment="Left" Height="23" Margin="248,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" TextChanged="tbAddNewTeg_TextChanged"/>
-        <Button Name="btCreateNewTag" Content="Create tag" HorizontalAlignment="Left" Margin="417,8,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btCreateNewTag_Click"/>
+        Title="AddRecord" Height="404.892" Width="381.613" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-6,2">
+        <Label Content="Account" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btAddAccount" Content="Add" HorizontalAlignment="Left" Margin="145,74,0,0" VerticalAlignment="Top" Width="32" Click="btAddAccount_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="146,127,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click"/>
+        <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="10,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Amount" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DatePick" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top"/>
+        <Button Name="btAddRecord" Content="AddRecord" HorizontalAlignment="Left" Visibility="Visible" Margin="12,327,0,0" VerticalAlignment="Top" Width="165" Click="btAddRecord_Click"/>
+        <RadioButton Name="rbSpending"  Content="Spending" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rbIncome" Content="Income" HorizontalAlignment="Left" Margin="91,157,0,0" VerticalAlignment="Top"/>
+        <Button Name="btCloseAdd" Content="Close" HorizontalAlignment="Left" Margin="194,327,0,0" VerticalAlignment="Top" Width="167" Click="btCloselAdd_Click"/>
+        <Label Content="Tags" HorizontalAlignment="Left" Margin="254,8,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="lbTagsView" HorizontalAlignment="Left" Height="233" Margin="194,64,0,0" VerticalAlignment="Top" Width="167"/>
+        <Button x:Name="btAddEditTags" Content="Add\Edit Tags" HorizontalAlignment="Left" Margin="194,34,0,0" VerticalAlignment="Top" Width="167" Click="btbtAddEditTags_Click"/>
+        <Button  Name="btSaveTag" Content="Save" HorizontalAlignment="Left" Margin="12,326,0,0" VerticalAlignment="Top" Visibility="Hidden" Width="165" Click="btSaveTag_Click" Height="21"/>
+        <TextBox Name="tbRecordId" HorizontalAlignment="Left" Height="20" Margin="12,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="33" IsReadOnly="True" RenderTransformOrigin="0.241,0.419"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="12,8,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

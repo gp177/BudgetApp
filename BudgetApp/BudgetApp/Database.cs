@@ -20,8 +20,6 @@ namespace BudgetApp
             conn.ConnectionString = CONN_STRING;
             conn.Open();
         }
-
-
         //Work with Records Table
 
         public int AddRecord(Record r)
@@ -35,6 +33,18 @@ namespace BudgetApp
             int addedId = (int)insertCommand.ExecuteScalar();
             return addedId;
         }
+        public void UpdateRecord(Record r)
+        {
+            SqlCommand updateCommand = new SqlCommand("Update Records SET Date=@Date,Amount=@Amount,AccountId=@AccountId,CategoryId=@CategoryId,RecordType=@RecordType WHERE RecordId=@RecordId ", conn);
+            updateCommand.Parameters.Add(new SqlParameter("RecordId", r.RecordId));
+            updateCommand.Parameters.Add(new SqlParameter("Date", r.Date));
+            updateCommand.Parameters.Add(new SqlParameter("Amount", r.Amount));
+            updateCommand.Parameters.Add(new SqlParameter("AccountId", r.AccountId));
+            updateCommand.Parameters.Add(new SqlParameter("CategoryId", r.CategoryId));
+            updateCommand.Parameters.Add(new SqlParameter("RecordType", r.RecordType));
+            updateCommand.ExecuteNonQuery();
+        }
+
 
         public List<Record> GetRecord()
         {
@@ -45,7 +55,7 @@ namespace BudgetApp
                                                         On Records.AccountId = Accounts.AccountId
                                                         Inner Join Category
                                                         On Records.CategoryId = Category.CategoryId ", conn);
-         
+
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -56,7 +66,7 @@ namespace BudgetApp
                     rec.CategoryStr = (string)reader["CategoryType"];
                     rec.Date = (DateTime)reader["Date"];
                     rec.Amount = Convert.ToDouble(reader["Amount"]);
-                    rec.TagDesctiption =  String.Join(",", GetTagsbyId(rec.RecordId));
+                    rec.TagDesctiption = String.Join(",", GetTagsbyId(rec.RecordId));
                     rec.RecordType = (string)reader["RecordType"];
                     AccList.Add(rec);
 
@@ -86,7 +96,7 @@ namespace BudgetApp
             deleteCommand.ExecuteNonQuery();
         }
         //end
-
+        //Category table
         public void AddCategory(String CategoryType)
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Category (CategoryType) VALUES (@CategoryType)", conn);
@@ -104,8 +114,6 @@ namespace BudgetApp
                 {
                     String xCategoryType = (String)reader["CategoryType"];
 
-                    //Record rec = new Record { CategoryType = xCategoryType };
-
                     CatList.Add(xCategoryType);
 
                 }
@@ -117,22 +125,30 @@ namespace BudgetApp
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) OUTPUT INSERTED.TagId VALUES (@Description)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Description", Description));
-            //int addedId = insertCommand.BeginExecuteNonQuery();            
-            insertCommand.ExecuteNonQuery();
-            //int addedId = (int)insertCommand.ExecuteScalar();
-            //return addedId;
+           insertCommand.ExecuteNonQuery();
+          
 
         }
+
+        public void AddPictures(Byte[] p)
+        {
+            SqlCommand insertCOmmand = new SqlCommand("INSERT INTO Records (Document) VALUES (@Document)", conn);
+            insertCOmmand.Parameters.Add(new SqlParameter("Document", p));
+            insertCOmmand.ExecuteNonQuery();
+
+        }
+
+
         public int GetTagIdbyDescription(String description)
         {
-            int tagId=0;
+            int tagId = 0;
             SqlCommand selectCommand = new SqlCommand("SELECT TagId FROM Tag WHERE Description=@Description", conn);
-            selectCommand.Parameters.Add(new SqlParameter("Description",description));
+            selectCommand.Parameters.Add(new SqlParameter("Description", description));
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    tagId =(int) reader[0];
+                    tagId = (int)reader[0];
 
                 }
             }
@@ -163,7 +179,7 @@ namespace BudgetApp
                                                         inner join InterTag
                                                         on InterTag.TagId = Tag.TagId
                                                         where InterTag.RecordId = @RecordId", conn);
-            selectCommand.Parameters.Add(new SqlParameter("RecordId",id));
+            selectCommand.Parameters.Add(new SqlParameter("RecordId", id));
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
                 while (reader.Read())
@@ -185,16 +201,16 @@ namespace BudgetApp
             SqlCommand insertCommand = new SqlCommand("INSERT INTO InterTag (TagId,RecordId) VALUES (@TagId,@RecordId)", conn);
             insertCommand.Parameters.Add(new SqlParameter("TagId", TagId));
             insertCommand.Parameters.Add(new SqlParameter("RecordId", RecordId));
-            //insertCommand.ExecuteNonQuery();
             insertCommand.ExecuteNonQuery();
 
 
         }
-        public void deleteInterTag(int id) { 
-        SqlCommand deleteCommand = new SqlCommand("DELETE FROM InterTag where RecordId=@id", conn);
-        deleteCommand.Parameters.Add(new SqlParameter("id", id));
-        deleteCommand.ExecuteNonQuery();
-}
+        public void deleteInterTag(int id)
+        {
+            SqlCommand deleteCommand = new SqlCommand("DELETE FROM InterTag where RecordId=@id", conn);
+            deleteCommand.Parameters.Add(new SqlParameter("id", id));
+            deleteCommand.ExecuteNonQuery();
+        }
         //end
 
         public void AddAmount(int Amount)
@@ -207,7 +223,7 @@ namespace BudgetApp
         public void AddDate(DateTime Date)
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Records (Date) VALUES (@Date)", conn);
-             insertCommand.Parameters.Add(new SqlParameter("Date", Date));
+            insertCommand.Parameters.Add(new SqlParameter("Date", Date));
         }
 
         public void AddAccount(String AccountName, String AccountType, int AccountNumber, double Balance)
@@ -220,9 +236,9 @@ namespace BudgetApp
             insertCommand.ExecuteNonQuery();
         }
         //Account Table
-          public int  GetAccountID(String AccName)
+        public int GetAccountID(String AccName)
         {
-            int id=0;
+            int id = 0;
             SqlCommand selectCommand = new SqlCommand("SELECT AccountID FROM Accounts Where AccountName=@AccountName", conn);
             selectCommand.Parameters.Add(new SqlParameter("AccountName", AccName));
             using (SqlDataReader reader = selectCommand.ExecuteReader())
@@ -235,35 +251,62 @@ namespace BudgetApp
             }
             return id;
         }
-        //get account name by id
-        //public string GetAccbyID(int AccId)
-        //{
-        //    string name="";
-        //    SqlCommand selectCommand = new SqlCommand("SELECT AccountName FROM Accounts Where AccountId=@AccountId", conn);
-        //    selectCommand.Parameters.Add(new SqlParameter("AccountName", AccId));
-        //    using (SqlDataReader reader = selectCommand.ExecuteReader())
-        //    {
+        public double GetBalanceById(int id)
+        {
+            double balance=0;
+            SqlCommand selectCommande = new SqlCommand("SELECT  Balance FROM Accounts WHERE AccountId=@AccountId ", conn);
+            selectCommande.Parameters.Add(new SqlParameter("AccountId", id));
+            using (SqlDataReader reader = selectCommande.ExecuteReader())
+            {
 
-        //        while (reader.Read())
-        //        {
-        //            name = (string)reader[0];
-        //        }
-        //    }
-        //    return name;
-        //}
-        //end 
+                while (reader.Read())
+                {
+                 balance = Convert.ToDouble(reader[0]);
+                }
+            }
+            return balance;
+        }
+        public void UpdateBalance(int id, double amount)
+        {
+           SqlCommand updateCommande = new SqlCommand("UPDATE Accounts Set Balance=@Balance where AccountId = @id", conn);
+            updateCommande.Parameters.Add(new SqlParameter("Balance", amount));
+            updateCommande.Parameters.Add(new SqlParameter("Id", id));
+           
+            updateCommande.ExecuteNonQuery();
 
+        }
+        //for Chatr
+        public Dictionary<String, double> getBalance()
+        {
+            Dictionary<String, double> dictionary = new Dictionary<String, double>();
+            SqlCommand selectCommand = new SqlCommand(@"select accountName,balance 
+                                                        from Accounts
+                                                        where AccountType = 'debit'
+                                                        or
+                                                        AccountType = 'Savings'", conn);
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            while (reader.Read())
+            {
+                dictionary.Add(Convert.ToString(reader[0]), Convert.ToDouble(reader[1]));
+            }
+            return dictionary;
+        }
+
+
+        //end for Chart
+
+        //end account
 
         //Category
         //get Category ID for inserting in Record
         public int GetCategoryID(String CatType)
         {
-            int id=0;
+            int id = 0;
             SqlCommand selectCommand = new SqlCommand("SELECT CategoryId FROM Category Where CategoryType=@CatType", conn);
             selectCommand.Parameters.Add(new SqlParameter("CatType", CatType));
             using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
-            
+
                 while (reader.Read())
                 {
                     id = (int)reader[0];
@@ -281,7 +324,7 @@ namespace BudgetApp
             {
                 while (reader.Read())
                 {
-                  
+
                     String xAccountName = (String)reader["AccountName"];
                     Record rec = new Record { AccountName = xAccountName };
 
@@ -292,14 +335,6 @@ namespace BudgetApp
             return AccList;
         }
 
-        //public void AddTag(Record r)
-        //{
-        //    SqlCommand insertCommand = new SqlCommand("INSERT INTO Record (Name,Age,Height) VALUES (@Name,@Age,@Height)", conn);
-        //    insertCommand.Parameters.Add(new SqlParameter("Name", name));
-        //    insertCommand.Parameters.Add(new SqlParameter("Age", age));
-        //    insertCommand.Parameters.Add(new SqlParameter("Height", height));
-        //    insertCommand.ExecuteNonQuery();
-        //}
     }
 }
 
