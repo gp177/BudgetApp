@@ -21,6 +21,8 @@ using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Microsoft.Win32;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace BudgetApp
 {
@@ -41,6 +43,7 @@ namespace BudgetApp
             {
                 db = new Database();
                 InitializeComponent();
+                ShowAccountCart();
                 reloadAccList();
 
 
@@ -51,6 +54,25 @@ namespace BudgetApp
             catch (SqlException ex)
             {
                 MessageBox.Show("DataBese error" + ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        public void ShowAccountCart()
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint =>
+                string.Format(" {0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+                   
+
+            foreach (var entry in db.getBalance())
+            {
+                pcDebitAccouts.Series.Add(new PieSeries
+                {
+                    Title = entry.Key,
+                    Values = new ChartValues<double> { entry.Value },
+                    DataLabels = true,
+                    LabelPoint = labelPoint
+
+                });
+                pcDebitAccouts.LegendLocation = LegendLocation.Bottom;
             }
         }
         public void reloadAccList()
@@ -407,6 +429,10 @@ namespace BudgetApp
 
             FilterbyDate((DateTime)dpFrom.SelectedDate, (DateTime)dpTo.SelectedDate);
         }
+        //Cart Section
+
+
+
     }
 
    

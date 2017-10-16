@@ -45,6 +45,7 @@ namespace BudgetApp
             updateCommand.ExecuteNonQuery();
         }
 
+
         public List<Record> GetRecord()
         {
             List<Record> AccList = new List<Record>();
@@ -251,7 +252,26 @@ namespace BudgetApp
             }
             return id;
         }
-      
+        //for Chatr
+        public Dictionary<String, double> getBalance()
+        {
+            Dictionary<String, double> dictionary = new Dictionary<String, double>();
+            SqlCommand selectCommand = new SqlCommand(@"select accountName,balance 
+                                                        from Accounts
+                                                        where AccountType = 'debit'
+                                                        or
+                                                        AccountType = 'Savings'", conn);
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
+            while (reader.Read())
+            {
+                dictionary.Add(Convert.ToString(reader[0]), Convert.ToDouble(reader[1]));
+            }
+            return dictionary;
+        }
+
+
+        //end for Chart
+        //end account
         //Category
         //get Category ID for inserting in Record
         public int GetCategoryID(String CatType)

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace BudgetApp
     public partial class AddRecord : Window
     {
         Database db;
+        String Filepat = "";
         public AddRecord()
         {
             db = new Database();
@@ -112,6 +115,8 @@ namespace BudgetApp
         private void btCloselAdd_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            var mainWin = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
+            mainWin.ShowAccountCart();
         }
 
         private void btbtAddEditTags_Click(object sender, RoutedEventArgs e)
@@ -154,5 +159,9 @@ namespace BudgetApp
             this.Close();
 
         }
+
+      
+            
+        
     }
 }
