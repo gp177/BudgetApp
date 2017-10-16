@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -125,17 +127,56 @@ namespace BudgetApp
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Tag (Description) OUTPUT INSERTED.TagId VALUES (@Description)", conn);
             insertCommand.Parameters.Add(new SqlParameter("Description", Description));
-           insertCommand.ExecuteNonQuery();
-          
+            insertCommand.ExecuteNonQuery();
+
 
         }
 
-        public void AddPictures(Byte[] p)
+        public void AddPictures(Byte[] p, int Id)
         {
-            SqlCommand insertCOmmand = new SqlCommand("INSERT INTO Records (Document) VALUES (@Document)", conn);
-            insertCOmmand.Parameters.Add(new SqlParameter("Document", p));
+            // SqlCommand insertCOmmand = new SqlCommand("INSERT INTO Records (Document) VALUES (@Document) Where RecordId=@RecordId", conn);
+            SqlCommand insertCOmmand = new SqlCommand("UPDATE Records SET Document = @Document WHERE RecordId = @RecordId", conn);
+//            insertCOmmand.Parameters.Add(new SqlParameter("Document", p));
+            SqlParameter binParam = new SqlParameter("Document", SqlDbType.VarBinary);
+            binParam.Value = p;
+            insertCOmmand.Parameters.Add(binParam);
+            insertCOmmand.Parameters.Add(new SqlParameter("RecordId", Id));
             insertCOmmand.ExecuteNonQuery();
 
+        }
+
+        public byte[] GetPicture(int id)
+
+        {
+            var cmd = new SqlCommand("SELECT Document FROM Records WHERE RecordId = @ID", conn);
+            
+                cmd.Parameters.AddWithValue("@ID", id);
+                return cmd.ExecuteScalar() as byte[];
+            
+            //Byte[] ggg=null;
+            //SqlDataAdapter dataAdapter = new SqlDataAdapter (new SqlCommand("SELECT Document FROM Records WHERE RecordId = 77", conn));
+
+
+
+                //DataSet dataSet = new DataSet();
+                //dataAdapter.Fill(dataSet);
+
+
+                //    Byte[] data = new Byte[0];
+                //    data = (Byte[])(dataSet.Tables[0].Rows[0]["Document"]);
+                //    MemoryStream mem = new MemoryStream(data);
+                //    //yourPictureBox.Image = Image.FromStream(mem);
+
+                ////selectCommand.Parameters.Add(new SqlParameter("RecordId", id));
+                ////using (SqlDataReader reader = selectCommand.ExecuteReader())
+                ////{
+                ////    while (reader.Read())
+                ////    {
+                ////        ggg = ((Byte[])reader[0]);
+
+                ////    }
+                ////}
+                //return mem;
         }
 
 

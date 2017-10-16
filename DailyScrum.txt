@@ -80,3 +80,9 @@ and finish up CRUD functionality.
 1. Completed saving data from views, added exception for Scanner, fixed exit button.
 2. Add generation for graphs of projected amounts, fix more UI issues.
 3. get help regarding movement of items on interface.
+
+
+16/10/2017 Giorgio Plescia,
+1. Completed saving image to database, added generating charts, fixed bugs from mainwindow, added extra ui functionality.
+2. Touch up chart and add record window, create powerpoint for presentation.
+3. Assistance on presentation setup and practice, help on some UI.
