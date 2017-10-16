@@ -18,6 +18,7 @@
             </MenuItem>
             <MenuItem Header="Tools" Height="25" Width="53" FontSize="18">
                 <MenuItem Header="Scanner" HorizontalAlignment="Left" Height="29" Width="156" Click="MenuItem_Click"/>
+                <MenuItem x:Name="miGraph" Header="Graph" HorizontalAlignment="Left" Height="29" Width="156" Click="miGraph_Click"/>
             </MenuItem>
             <MenuItem Header="Help" Height="25" Width="56" FontSize="18" >
                 <MenuItem x:Name="miAbout" Header="About" HorizontalAlignment="Left" Height="29" Width="156" Click="miAbout_Click_1"/>
