@@ -80,3 +80,8 @@ and finish up CRUD functionality.
 1. Completed saving data from views, added exception for Scanner, fixed exit button.
 2. Add generation for graphs of projected amounts, fix more UI issues.
 3. get help regarding movement of items on interface.
+
+16.10.2017
+1.filters, chart in main page, sm changes in interface, couldn't implement blob saving
+2. continue with blob
+3. ask techer how to save blobs in remote server
