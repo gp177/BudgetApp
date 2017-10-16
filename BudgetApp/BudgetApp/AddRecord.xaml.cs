@@ -86,6 +86,7 @@ namespace BudgetApp
         {
             
             Record r = new Record();
+            double AccUpdate = 0;
             // values from user inputsz
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
@@ -102,6 +103,14 @@ namespace BudgetApp
             r.CategoryId = CatId;
             r.RecordType = RecType;
             int recId = db.AddRecord(r);
+            //account balance change DOESNT TWORK!!!!!!!!!!!!!!!
+            if (RecType.Equals("Spending")) {
+                db.UpdateBalance(AccId, (Double)db.GetBalanceById(AccId) - (Double)Amount);
+             }
+               db.UpdateBalance(AccId, db.GetBalanceById(AccId) + Amount);
+            //END:account balance change
+
+
             foreach (String item in lbTagsView.Items)
             {
                 int tegId = db.GetTagIdbyDescription(item);

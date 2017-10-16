@@ -96,7 +96,7 @@ namespace BudgetApp
             deleteCommand.ExecuteNonQuery();
         }
         //end
-
+        //Category table
         public void AddCategory(String CategoryType)
         {
             SqlCommand insertCommand = new SqlCommand("INSERT INTO Category (CategoryType) VALUES (@CategoryType)", conn);
@@ -201,7 +201,6 @@ namespace BudgetApp
             SqlCommand insertCommand = new SqlCommand("INSERT INTO InterTag (TagId,RecordId) VALUES (@TagId,@RecordId)", conn);
             insertCommand.Parameters.Add(new SqlParameter("TagId", TagId));
             insertCommand.Parameters.Add(new SqlParameter("RecordId", RecordId));
-            //insertCommand.ExecuteNonQuery();
             insertCommand.ExecuteNonQuery();
 
 
@@ -252,6 +251,30 @@ namespace BudgetApp
             }
             return id;
         }
+        public double GetBalanceById(int id)
+        {
+            double balance=0;
+            SqlCommand selectCommande = new SqlCommand("SELECT  Balance FROM Accounts WHERE AccountId=@AccountId ", conn);
+            selectCommande.Parameters.Add(new SqlParameter("AccountId", id));
+            using (SqlDataReader reader = selectCommande.ExecuteReader())
+            {
+
+                while (reader.Read())
+                {
+                 balance = Convert.ToDouble(reader[0]);
+                }
+            }
+            return balance;
+        }
+        public void UpdateBalance(int id, double amount)
+        {
+           SqlCommand updateCommande = new SqlCommand("UPDATE Accounts Set Balance=@Balance where AccountId = @id", conn);
+            updateCommande.Parameters.Add(new SqlParameter("Balance", amount));
+            updateCommande.Parameters.Add(new SqlParameter("Id", id));
+           
+            updateCommande.ExecuteNonQuery();
+
+        }
         //for Chatr
         public Dictionary<String, double> getBalance()
         {
@@ -271,7 +294,9 @@ namespace BudgetApp
 
 
         //end for Chart
+
         //end account
+
         //Category
         //get Category ID for inserting in Record
         public int GetCategoryID(String CatType)
