@@ -429,9 +429,14 @@ namespace BudgetApp
 
             FilterbyDate((DateTime)dpFrom.SelectedDate, (DateTime)dpTo.SelectedDate);
         }
-        //Cart Section
 
 
+        private void miGraph_Click(object sender, RoutedEventArgs e)
+        {
+            Form1 chart = new Form1();
+            chart.Show();
+
+        }
 
     }
 
