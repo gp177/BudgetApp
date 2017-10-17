@@ -93,3 +93,7 @@ and finish up CRUD functionality.
 2. continue with blob
 3. ask techer how to save blobs in remote server
 >>>>>>> 35e1d432f53f68da9fce83b7d4417ccdd90c0a89
+17.102017 Oleksii Redko
+1.Bug fix for Charts
+2.finalazing project before submit, bug fixes, layout changes
+3.disscus saving images consept with teammate 
