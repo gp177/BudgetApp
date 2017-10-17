@@ -5,28 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetApp"
         mc:Ignorable="d"
-        Title="AddRecord" Height="404.892" Width="381.613" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,-6,2">
+        Title="AddRecord" Height="417.892" Width="379.613" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-6,1">
         <Label Content="Account" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Height="27"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Name="btAddAccount" Content="Add" HorizontalAlignment="Left" Margin="145,74,0,0" VerticalAlignment="Top" Width="32" Click="btAddAccount_Click"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="146,127,0,0" VerticalAlignment="Top" Width="31" Click="Button_Click"/>
-        <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="10,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Amount" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbBalance" HorizontalAlignment="Left" Height="23" Margin="10,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Amount" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="DatePick" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Date" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top"/>
-        <Button Name="btAddRecord" Content="AddRecord" HorizontalAlignment="Left" Visibility="Visible" Margin="12,327,0,0" VerticalAlignment="Top" Width="165" Click="btAddRecord_Click"/>
+        <Button Name="btAddRecord" Content="AddRecord" HorizontalAlignment="Left" Visibility="Visible" Margin="12,343,0,0" VerticalAlignment="Top" Width="165" Click="btAddRecord_Click"/>
         <RadioButton Name="rbSpending"  Content="Spending" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rbIncome" Content="Income" HorizontalAlignment="Left" Margin="91,157,0,0" VerticalAlignment="Top"/>
-        <Button Name="btCloseAdd" Content="Close" HorizontalAlignment="Left" Margin="194,327,0,0" VerticalAlignment="Top" Width="167" Click="btCloselAdd_Click"/>
+        <Button Name="btCloseAdd" Content="Close" HorizontalAlignment="Left" Margin="194,343,0,0" VerticalAlignment="Top" Width="167" Click="btCloselAdd_Click"/>
         <Label Content="Tags" HorizontalAlignment="Left" Margin="254,8,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="lbTagsView" HorizontalAlignment="Left" Height="233" Margin="194,64,0,0" VerticalAlignment="Top" Width="167"/>
+        <ListBox Name="lbTagsView" HorizontalAlignment="Left" Height="257" Margin="194,64,0,0" VerticalAlignment="Top" Width="167"/>
         <Button x:Name="btAddEditTags" Content="Add\Edit Tags" HorizontalAlignment="Left" Margin="194,34,0,0" VerticalAlignment="Top" Width="167" Click="btbtAddEditTags_Click"/>
-        <Button  Name="btSaveTag" Content="Save" HorizontalAlignment="Left" Margin="12,326,0,0" VerticalAlignment="Top" Visibility="Hidden" Width="165" Click="btSaveTag_Click" Height="21"/>
+        <Button  Name="btSaveTag" Content="Save" HorizontalAlignment="Left" Margin="12,342,0,0" VerticalAlignment="Top" Visibility="Hidden" Width="165" Click="btSaveTag_Click" Height="21"/>
         <TextBox Name="tbRecordId" HorizontalAlignment="Left" Height="20" Margin="12,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="33" IsReadOnly="True" RenderTransformOrigin="0.241,0.419"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="12,8,0,0" VerticalAlignment="Top"/>
+        <Button Name="btAttachDoc" Content="Attach Document" HorizontalAlignment="Left" Margin="12,301,0,0" VerticalAlignment="Top" Width="118" Click="btAttachDoc_Click"/>
 
     </Grid>
 </Window>

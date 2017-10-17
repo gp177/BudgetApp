@@ -169,8 +169,10 @@ namespace BudgetApp
 
         }
 
-      
-            
-        
+        private void btAttachDoc_Click(object sender, RoutedEventArgs e)
+        {
+            Scanners scn = new Scanners();
+            scn.ShowDialog();
+        }
     }
 }
