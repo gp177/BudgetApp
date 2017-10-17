@@ -103,10 +103,10 @@ namespace BudgetApp
             r.CategoryId = CatId;
             r.RecordType = RecType;
             int recId = db.AddRecord(r);
-            //account balance change DOESNT TWORK!!!!!!!!!!!!!!!
+            //account balance change DOESNT WORK!!!!!!!!!!!!!!!
             if (RecType.Equals("Spending")) {
                 db.UpdateBalance(AccId, (Double)db.GetBalanceById(AccId) - (Double)Amount);
-             }
+             }else
                db.UpdateBalance(AccId, db.GetBalanceById(AccId) + Amount);
             //END:account balance change
 

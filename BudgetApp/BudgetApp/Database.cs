@@ -309,10 +309,9 @@ namespace BudgetApp
         }
         public void UpdateBalance(int id, double amount)
         {
-           SqlCommand updateCommande = new SqlCommand("UPDATE Accounts Set Balance=@Balance where AccountId = @id", conn);
+           SqlCommand updateCommande = new SqlCommand("UPDATE Accounts Set Balance=@Balance where AccountId = @Id", conn);
             updateCommande.Parameters.Add(new SqlParameter("Balance", amount));
             updateCommande.Parameters.Add(new SqlParameter("Id", id));
-           
             updateCommande.ExecuteNonQuery();
 
         }

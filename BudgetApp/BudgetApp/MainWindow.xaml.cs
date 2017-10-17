@@ -60,8 +60,8 @@ namespace BudgetApp
         {
             Func<ChartPoint, string> labelPoint = chartPoint =>
                 string.Format(" {0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-                   
 
+            pcDebitAccouts.Series.Clear();
             foreach (var entry in db.getBalance())
             {
                 pcDebitAccouts.Series.Add(new PieSeries
