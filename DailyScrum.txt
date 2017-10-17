@@ -81,7 +81,6 @@ and finish up CRUD functionality.
 2. Add generation for graphs of projected amounts, fix more UI issues.
 3. get help regarding movement of items on interface.
 
-<<<<<<< HEAD
 
 16/10/2017 Giorgio Plescia,
 1. Completed saving image to database, added generating charts, fixed bugs from mainwindow, added extra ui functionality.
@@ -92,4 +91,10 @@ and finish up CRUD functionality.
 1.filters, chart in main page, sm changes in interface, couldn't implement blob saving
 2. continue with blob
 3. ask techer how to save blobs in remote server
->>>>>>> 35e1d432f53f68da9fce83b7d4417ccdd90c0a89
+
+
+
+17/10/2017 Giorgio Plescia,
+1. Finished import and export image from and to database, Fixed some ui's, Line chart generation.
+2. fix up and format code, delete test code comments, compress all files for upload.
+3. Ask partner if any other changes are needed before final version is uploaded.
