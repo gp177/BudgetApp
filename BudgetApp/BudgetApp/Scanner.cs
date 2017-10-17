@@ -91,13 +91,7 @@ namespace BudgetApp
         private void button4_Click(object sender, EventArgs e)
         {
             db = new Database();
-            //pictureBox1.Image = db.GetPicture(77);
-            //byte[] x = db.GetPicture(77);
             Image x = (Bitmap)((new ImageConverter().ConvertFrom(db.GetPicture(77))));
-
-            //var ms = new MemoryStream(db.GetPicture(77));
-
-            //  System.Drawing.Image scanpic = Image.FromStream(ms);
             pictureBox1.Image = x;
 
         }

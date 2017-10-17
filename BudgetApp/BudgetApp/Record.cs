@@ -62,16 +62,16 @@ namespace BudgetApp
         {
             get { return _Amount; }
 
-            set
-            {
-                if ((value <= 0) || value > 9999999999999)
-                    throw new ArgumentOutOfRangeException("Amount must be in range");
+            set { 
+            //{
+            //    if ((value <= 0) || value > 9999999999999)
+            //        throw new ArgumentOutOfRangeException("Amount must be in range");
 
-                else
-                {
+            
+                
 
                     _Amount = value;
-                }
+                
             }
         }
 

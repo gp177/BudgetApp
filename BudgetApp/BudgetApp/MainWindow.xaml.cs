@@ -194,13 +194,9 @@ namespace BudgetApp
             {
 
                 url = url.Substring(0, url.Length - 1);
-
-
                 const string base_url =
                     "http://download.finance.yahoo.com/d/quotes.csv?s=@&f=sl1d1t1c1";
                 url = base_url.Replace("@", url);
-
-
                 try
                 {
 
@@ -220,10 +216,6 @@ namespace BudgetApp
                     MessageBox.Show(ex.Message, "Read Error");
                 }
             }
-
-
-
-
 
         }
 
