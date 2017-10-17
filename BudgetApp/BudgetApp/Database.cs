@@ -333,6 +333,16 @@ namespace BudgetApp
             return dictionary;
         }
 
+        public double GetBalanceGraph(double balance)
+        {
+            SqlCommand selectCommand = new SqlCommand(@"Select balance from Accounts", conn);
+            selectCommand.Parameters.Add(new SqlParameter("balance", balance));
+            selectCommand.ExecuteNonQuery();
+
+            return balance;
+
+        }
+
 
         //end for Chart
 
