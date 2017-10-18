@@ -35,7 +35,7 @@ namespace BudgetApp
 
         private void btCreateNewTag_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: check for double ,focus on added element on a list
+            
             try
             {
                 String tag = tbAddNewTag.Text;

@@ -49,21 +49,6 @@ namespace BudgetApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            db = new Database();
-            System.Drawing.Image scanpic = pictureBox1.Image;
-            
-           // System.Drawing.Image image;
-            System.IO.MemoryStream imageStream;
-            byte[] imageBytes;
-            
-            imageStream = new System.IO.MemoryStream();
-            scanpic.Save(imageStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-            imageBytes = imageStream.ToArray();
-            //  VARBINARY(MAX)
-            db.AddPictures(imageBytes, 77);
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -77,7 +62,7 @@ namespace BudgetApp
             db = new Database();
             System.Drawing.Image scanpic = pictureBox1.Image;
 
-            // System.Drawing.Image image;
+           // byte array
             System.IO.MemoryStream imageStream;
             byte[] imageBytes;
 

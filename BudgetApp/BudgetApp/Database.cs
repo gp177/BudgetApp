@@ -134,9 +134,8 @@ namespace BudgetApp
 
         public void AddPictures(Byte[] p, int Id)
         {
-            // SqlCommand insertCOmmand = new SqlCommand("INSERT INTO Records (Document) VALUES (@Document) Where RecordId=@RecordId", conn);
+           
             SqlCommand insertCOmmand = new SqlCommand("UPDATE Records SET Document = @Document WHERE RecordId = @RecordId", conn);
-//            insertCOmmand.Parameters.Add(new SqlParameter("Document", p));
             SqlParameter binParam = new SqlParameter("Document", SqlDbType.VarBinary);
             binParam.Value = p;
             insertCOmmand.Parameters.Add(binParam);
@@ -152,31 +151,6 @@ namespace BudgetApp
             
                 cmd.Parameters.AddWithValue("@ID", id);
                 return cmd.ExecuteScalar() as byte[];
-            
-            //Byte[] ggg=null;
-            //SqlDataAdapter dataAdapter = new SqlDataAdapter (new SqlCommand("SELECT Document FROM Records WHERE RecordId = 77", conn));
-
-
-
-                //DataSet dataSet = new DataSet();
-                //dataAdapter.Fill(dataSet);
-
-
-                //    Byte[] data = new Byte[0];
-                //    data = (Byte[])(dataSet.Tables[0].Rows[0]["Document"]);
-                //    MemoryStream mem = new MemoryStream(data);
-                //    //yourPictureBox.Image = Image.FromStream(mem);
-
-                ////selectCommand.Parameters.Add(new SqlParameter("RecordId", id));
-                ////using (SqlDataReader reader = selectCommand.ExecuteReader())
-                ////{
-                ////    while (reader.Read())
-                ////    {
-                ////        ggg = ((Byte[])reader[0]);
-
-                ////    }
-                ////}
-                //return mem;
         }
 
 

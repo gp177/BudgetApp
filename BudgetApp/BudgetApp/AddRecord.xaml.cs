@@ -87,7 +87,8 @@ namespace BudgetApp
             
             Record r = new Record();
             double AccUpdate = 0;
-            // values from user inputsz
+            // values from user inputs
+
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
             String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));
@@ -103,7 +104,7 @@ namespace BudgetApp
             r.CategoryId = CatId;
             r.RecordType = RecType;
             int recId = db.AddRecord(r);
-            //account balance change DOESNT TWORK!!!!!!!!!!!!!!!
+            
             if (RecType.Equals("Spending")) {
                 db.UpdateBalance(AccId, (Double)db.GetBalanceById(AccId) - (Double)Amount);
              }
@@ -138,7 +139,8 @@ namespace BudgetApp
         private void btSaveTag_Click(object sender, RoutedEventArgs e)
         {
             Record r = new Record();
-            // values from user inputsz
+
+            // values from user inputs
             String Account = cbAccount.Text;
             String Category = cbCategory.Text;
             String RecType = (rbSpending.IsChecked == true ? "Spending" : (rbIncome.IsChecked == true ? "Income" : ""));

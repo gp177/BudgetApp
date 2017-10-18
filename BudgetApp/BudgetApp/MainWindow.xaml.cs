@@ -38,6 +38,7 @@ namespace BudgetApp
         public MainWindow()
         {
             string fileName = @"D:\test\image.jpg";
+
             //Database connection
             try
             {
